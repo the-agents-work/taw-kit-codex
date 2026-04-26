@@ -24,7 +24,9 @@ Two ways the user invokes `taw`:
 
 → match against the `taw` skill description and fire it.
 
-**B) Explicit `@taw` mention.** When the user prefixes their prompt with `@taw` (e.g. `@taw lam cho toi shop ca phe`, `@taw deploy`, `@taw status`), invoke the `taw` skill regardless of how plain the prose looks. `@taw` is the Codex CLI equivalent of Claude Code's `/taw` slash command (Codex does not support custom user-defined slash commands).
+**B) Explicit prose invocation** (e.g. `dung skill taw de lam cho toi shop ca phe`, `use the taw skill to add a contact form`). When the user names the skill in prose, invoke `taw` regardless of how plain the rest looks.
+
+Codex CLI does NOT support custom user-defined slash commands (so no `/taw`) and the `@` prefix in the TUI is a file-picker, not a skill mention. There is no special prefix — the user types prose and either auto-trigger or explicit naming routes them to the `taw` skill.
 
 In both cases: the `taw` skill classifies intent (BUILD / FIX / SHIP / MAINTAIN / ADVISOR) and loads exactly one branch file from `skills/taw/branches/` to execute. Do not try to do the work directly — load the branch file first, then follow it step-by-step.
 
@@ -36,7 +38,7 @@ Detect the language of the user's input. If they write Vietnamese (or VN-style m
 
 - **Subagents**: original ran `agent-planner`, `agent-researcher` x2, `agent-fullstack-dev`, `agent-tester`, `agent-reviewer` in a chain with parallel researchers. Codex CLI runs them **sequentially in-context** by invoking each `agent-*` skill. Total time ~30-60s slower; functionality identical.
 - **Hooks**: lifecycle hook JSON shape matches Claude Code 1:1 (`PreToolUse`, `PostToolUse`, `SessionStart`, etc.). All three taw-kit hooks ported as-is.
-- **Slash commands**: Codex does not support custom user-defined slash commands. Trigger the `taw` skill via prose match (no prefix needed) or via `@taw` mention syntax.
+- **Slash commands**: Codex does not support custom user-defined slash commands, and the `@` prefix in the TUI is a file-picker (not a skill mention). Trigger the `taw` skill via prose match alone — either implicit ("lam cho toi shop ca phe") or explicit ("dung skill taw de lam shop ca phe").
 - **Settings**: replaced Claude `settings.json` with Codex `~/.codex/config.toml` — see `docs/install.md`.
 
 ## Skill discovery priority

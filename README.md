@@ -13,7 +13,7 @@
   → trả về URL đã chạy
 ```
 
-**Codex không có custom slash command** (khác Claude Code không có `/taw`). 2 cách gọi:
+**Codex không có custom slash command** (khác Claude Code có `/taw`). Trong TUI, `@` cũng KHÔNG dùng được — nó là file picker autocomplete, không phải skill mention. 2 cách gọi:
 
 **1) Auto-trigger qua prose** (khuyên dùng — đỡ gõ):
 ```
@@ -29,14 +29,13 @@
 > kiem tra bao mat                      → audit P0/P1/P2
 ```
 
-**2) `@taw` mention** (khi muốn ép kit chạy hoặc auto-trigger không bắt):
+**2) Gọi rõ tên skill bằng prose** (khi auto-trigger không bắt):
 ```
-> @taw lam cho toi shop ca phe
-> @taw deploy
-> @taw status
+> dung skill taw de lam shop ca phe
+> use the taw skill to add a contact form
 ```
 
-`@taw` ↔ `/taw` của Claude Code — tương đương 1:1.
+Không có cú pháp `/taw` hay `@taw` trực tiếp — dùng prose.
 
 ---
 
@@ -104,7 +103,7 @@ Codex sẽ tự nhận skill `taw`, hỏi 3–5 câu cho rõ yêu cầu, hiển 
 
 | Tính năng | taw-kit (Claude) | taw-kit-codex |
 |-----------|------------------|---------------|
-| Gọi rõ ràng | `/taw <prose>` | `@taw <prose>` (Codex không cho custom slash) |
+| Gọi rõ ràng | `/taw <prose>` | "dung skill taw de ..." (prose only — Codex không có custom slash, `@` chỉ là file picker) |
 | Auto-trigger qua prose | Có | Có (cùng cơ chế description match) |
 | Subagent chạy song song | 2 researcher song song | Tuần tự (chậm hơn ~30s) |
 | Skills format | Giống nhau | Giống nhau (cùng `name` + `description` frontmatter) |
