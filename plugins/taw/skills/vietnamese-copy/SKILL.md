@@ -13,6 +13,18 @@ description: >
 Generate natural, conversion-optimised Vietnamese copy for taw-kit web projects.
 Tone is friendly and direct — Southern Vietnamese everyday speech, not formal.
 
+## HARD pre-flight — font must support Vietnamese
+
+Before writing copy, verify the project's font stack supports Vietnamese diacritics. If it doesn't, copy will render broken: dấu (`Ư`, `Ờ`, `Ạ`, `ặ`, `ự`...) trôi tách khỏi chữ → user thấy "NGƯỜI" hiển thị thành "NGƯ" + "ỜI" rời rạc.
+
+```bash
+grep -rE "next/font|@import.*fonts.googleapis|<link.*fonts.googleapis" app/ components/ 2>/dev/null
+```
+
+If you find `next/font` imports without `subsets: ['vietnamese', ...]`, OR Google Fonts links without `subset=vietnamese`, OR a font from the unsafe list (`Bodoni`, `Cooper`, `Tiempos`, `Yeseva One`, `Abril Fatface`, etc.) — STOP and fix the font first. See `frontend-design` skill, "HARD RULE — Vietnamese diacritic support" section, for the safe-font shortlist + correct `next/font` config.
+
+If you write copy onto a project that fails this check, the work looks broken even if the copy is perfect.
+
 ## Copy Types
 
 ### Hero Section

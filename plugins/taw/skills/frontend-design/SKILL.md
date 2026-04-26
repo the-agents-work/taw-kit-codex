@@ -40,3 +40,77 @@ Interpret creatively and make unexpected choices that feel genuinely designed fo
 **IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
 
 Remember: Claude is capable of extraordinary creative work. Don't hold back, show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+
+---
+
+## HARD RULE — Vietnamese diacritic support (taw-kit-codex override)
+
+**WHY:** taw-kit-codex projects default to Vietnamese audiences. Many "designer" display fonts on Google Fonts (Bodoni, Cooper, Tiempos, Yeseva One, Abril Fatface, etc.) ship Latin glyphs only — when used for VN text, the browser falls back to the system font for diacritics (`Ư`, `Ờ`, `Ạ`, `ặ`, `ự`...). Result: dấu thanh trôi tách khỏi chữ, kerning vỡ, "NGƯỜI" hiển thị thành "NGƯ" + "ỜI" rõ rệt. Looks broken.
+
+**RULE 1 — Pick from this VN-safe Google Fonts shortlist** (every font here has full Vietnamese subset, verified):
+
+**Body / sans:**
+- `Be Vietnam Pro` — designed-in-VN, the safest bet
+- `Inter`, `Plus Jakarta Sans`, `Manrope`, `DM Sans`
+- `Public Sans`, `Source Sans 3`, `IBM Plex Sans`
+- `Noto Sans` (universal — works for any script)
+
+**Body / serif:**
+- `Lora`, `Source Serif 4`, `IBM Plex Serif`
+- `Noto Serif`
+
+**Display (headings) — distinctive AND VN-safe:**
+- `Bricolage Grotesque` — modern, characterful
+- `Be Vietnam Pro` (heavier weights for display)
+- `Fraunces` (variable serif, full VN)
+- `Bodoni Moda` (NOT plain "Bodoni" — Moda has VN, plain Bodoni doesn't)
+- `Playfair Display` (VN partial — verify before commit)
+- `DM Serif Display`, `IBM Plex Serif`
+- `Sora`, `Outfit`
+
+**AVOID for VN projects** (no VN diacritics):
+- `Cooper Hewitt`, `Tiempos`, `Bodoni*` (the plain ones), `Didot`, `Cinzel`
+- `Abril Fatface`, `Yeseva One`, `Fjalla One`, `Bevan`
+- Most "novelty" / single-style display fonts
+- Web-safe fallbacks like `Times New Roman`, `Georgia` (technically work but ugly for VN — use Noto Serif instead)
+
+**RULE 2 — Always specify the `vietnamese` subset when using `next/font`:**
+
+```ts
+// ✓ CORRECT
+import { Be_Vietnam_Pro, Bricolage_Grotesque } from 'next/font/google'
+
+const sans = Be_Vietnam_Pro({
+  subsets: ['vietnamese', 'latin'],   // ← MUST include 'vietnamese'
+  weight: ['400', '500', '700'],
+  variable: '--font-sans',
+})
+
+const display = Bricolage_Grotesque({
+  subsets: ['vietnamese', 'latin'],
+  variable: '--font-display',
+})
+```
+
+```ts
+// ✗ WRONG — defaults to 'latin' only, VN diacritics fall back to system font
+const sans = Be_Vietnam_Pro({ weight: ['400', '700'] })
+```
+
+**RULE 3 — For raw `<link>` tags, request the `vietnamese` subset explicitly:**
+
+```html
+<!-- ✓ CORRECT -->
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;700&display=swap&subset=vietnamese,latin" rel="stylesheet">
+
+<!-- ✗ WRONG — no subset param, gets latin only -->
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda&display=swap" rel="stylesheet">
+```
+
+**RULE 4 — Verify before commit:**
+
+Before declaring the design done, render a VN-heavy headline like "NGƯỜI MÊ HƯƠNG CÀ PHÊ THẬT" or "ĐƯỢC YÊU THÍCH NHẤT" and visually confirm dấu (`Ư Ờ Ậ Ặ ự ữ ặ`) sit ON the base letter, not floating above/beside it. If you can't render in browser, search the chosen font's Google Fonts page for "Vietnamese" in the language list — if it's not there, swap.
+
+**RULE 5 — When in doubt, pair with `Be Vietnam Pro`:**
+
+Created specifically for Vietnamese typography. Ships 14 weights including italic. Works as both body and display. If user wants "safe + elegant", default to it.
