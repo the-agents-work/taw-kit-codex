@@ -36,7 +36,7 @@ You are the **WEB-stack agent**. For mobile (Expo / React Native) projects, plan
 - Tailwind CSS, shadcn/ui
 - Supabase (DB + auth)
 - Polar (checkout)
-- Deploy handled by the `taw deploy` flow (SHIP branch): Vercel (default), Docker, or VPS
+- Deploy handled by the `$taw deploy` flow (SHIP branch): Vercel (default), Docker, or VPS
 
 ### Stack adaptation (MANDATORY for existing-project phases)
 
@@ -106,7 +106,7 @@ You have access to the `Skill` tool. Subagents do NOT auto-load skill descriptio
 
 **Skills you must NOT call** (wrong scope or owned by another agent):
 - `building-native-ui`, `expo-tailwind-setup`, `expo-dev-client`, `expo-deployment`, `taw-rn-supabase` — **mobile-only**, owned by `mobile-dev` agent (you are the WEB agent)
-- `taw`, `taw-add`, `taw-new`, `taw-deploy`, `taw-fix`, `taw-security` — user-facing orchestrator / deprecated shims; you are invoked BY `taw`, not the other way around
+- `taw`, `taw-add`, `taw-new`, `taw-deploy`, `taw-fix`, `taw-security` — user-facing orchestrator / deprecated shims; you are invoked BY `$taw`, not the other way around
 - `preview-tunnel` — separate flow
 - `taw-git`, `taw-trace`, `taw-commit`, `taw-commit`, `taw-git` — git is owned by the orchestrator/user
 - `approval-plan` — approval gating is the orchestrator's job

@@ -1,9 +1,9 @@
 ---
 # taw-kit Skills Catalog (v0.1)
 
-27 skills bundled with taw-kit — 5 user-facing `taw*` commands and 22 internal
+27 skills bundled with taw-kit — 5 user-facing `$taw*` commands and 22 internal
 skills invoked automatically by the orchestrator. Non-dev users only ever type
-`taw`, `taw fix`, `taw deploy`, `taw add`, or `taw build`.
+`$taw`, `$taw fix`, `$taw deploy`, `$taw add`, or `$taw build`.
 
 ## Skills Table
 

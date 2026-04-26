@@ -12,7 +12,7 @@ Run `@branches/maintain/security.md` in quick mode (P0 only). Read the report.
 - **≥1 P0** → STOP. Echo P0 list verbatim. Emit:
   ```
   🚨 Không thể deploy — còn {N} lỗi bảo mật P0.
-  Gõ `taw audit` để xem và fix, rồi thử deploy lại.
+  Gõ `$taw audit` để xem và fix, rồi thử deploy lại.
   ```
   Write `.taw/checkpoint.json`: `{"status":"blocked-by-security","p0_count":N}`. Do NOT proceed.
 
@@ -24,7 +24,7 @@ Run ALL. Any fail → stop with matching message.
 
 | # | Check | Command | Fail msg |
 |---|---|---|---|
-| 1 | Build passes | `npm run build` exit 0 | "Build đang lỗi. Gõ `taw fix` trước." |
+| 1 | Build passes | `npm run build` exit 0 | "Build đang lỗi. Gõ `$taw fix` trước." |
 | 2 | `.env.local` exists | `test -f .env.local` | "Thiếu `.env.local`. Tạo file với keys Supabase+Polar." |
 | 3 | Required env keys | grep `NEXT_PUBLIC_SUPABASE_URL` + `NEXT_PUBLIC_SUPABASE_ANON_KEY` | "Thiếu keys Supabase trong `.env.local`." |
 | 4 | Next config exists | `test -f next.config.{js,mjs,ts}` | "Không thấy next config — đây có phải dự án taw-kit?" |
@@ -112,7 +112,7 @@ Cần config VPS. Tạo .taw/vps.env:
   VPS_USER=deploy
   VPS_PATH=/var/www/$PROJECT_NAME
   VPS_PORT=22
-Rồi chạy lại taw deploy --target=vps
+Rồi chạy lại $taw deploy --target=vps
 ```
 Stop.
 

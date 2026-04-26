@@ -15,7 +15,7 @@ Produce a Mermaid v11 diagram string. The renderer (markdown-novel-viewer, GitHu
 
 - Plan phase file benefits from a flow diagram (≥ 3 interacting steps)
 - User asks "vẽ cho tôi sơ đồ" or "architecture diagram"
-- Orchestrator needs to show data flow for `taw add` (how a new feature wires into existing code)
+- Orchestrator needs to show data flow for `$taw add` (how a new feature wires into existing code)
 
 ## Supported diagram types
 
@@ -37,7 +37,7 @@ Produce a Mermaid v11 diagram string. The renderer (markdown-novel-viewer, GitHu
 
 ```mermaid
 flowchart TD
-  U["Người dùng gõ taw"] --> C["Phân loại intent"]
+  U["Người dùng gõ $taw"] --> C["Phân loại intent"]
   C --> Q["Hỏi 3-5 câu làm rõ"]
   Q --> P["Render plan bullets"]
   P --> G{"OK?"}

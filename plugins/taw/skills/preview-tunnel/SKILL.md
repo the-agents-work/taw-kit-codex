@@ -41,7 +41,7 @@ Provide user with the tunnel URL and this note in Vietnamese:
 ```
 Link xem thu: https://ten-cua-hang.loca.lt
 (Link nay chi hoat dong khi may tinh ban dang bat.
-De co link thuong tru, dung taw deploy)
+De co link thuong tru, dung $taw deploy)
 ```
 
 ## Running Both in Parallel

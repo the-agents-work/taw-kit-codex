@@ -134,7 +134,7 @@ Kit được quyền **từ chối đề xuất** khi không đủ signal. Đó 
 
 ```
 Gõ:
-  build A    → em gọi taw <feature A description> để build
+  build A    → em gọi $taw <feature A description> để build
   build B    → build feature B
   cancel     → không làm gì, để anh suy nghĩ thêm
 ```
@@ -148,13 +148,13 @@ Append to `.taw/suggestions.jsonl`:
 {"ts":"{ISO}","target_project":"{name}","demand_evidence":"{from Q1}","chosen":"{A|B|C|none}","confidence":"{HIGH|MEDIUM|LOW}"}
 ```
 
-Future `taw suggest` sessions can skim this — if last 3 suggestions all had LOW confidence, emit warning: "3 session gần nhất đều chưa có demand. Anh đang đoán thay vì hỏi user?"
+Future `$taw suggest` sessions can skim this — if last 3 suggestions all had LOW confidence, emit warning: "3 session gần nhất đều chưa có demand. Anh đang đoán thay vì hỏi user?"
 
 ## Constraints
 
 - **3 questions are MANDATORY** — do NOT skip even if user insists. They are the value.
 - **Max ONE escape** — if user says "just suggest already" after Q1, ask 1 more (Q3), then proceed.
 - Never propose >3 features — choice paralysis kills action.
-- Never propose features that require a stack swap (that's `taw stack-swap` territory).
+- Never propose features that require a stack swap (that's `$taw stack-swap` territory).
 - LOW confidence is not a failure — it's a useful honest signal.
-- If project has 0 features built yet → this branch wrong fit. Redirect: "Anh chưa có app — bắt đầu bằng `taw build` trước."
+- If project has 0 features built yet → this branch wrong fit. Redirect: "Anh chưa có app — bắt đầu bằng `$taw build` trước."

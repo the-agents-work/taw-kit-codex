@@ -103,7 +103,7 @@ After auto-fix, re-scan affected files and report new state.
 ## Step 4 — Deploy gate integration (informational)
 
 If user asks to deploy after audit:
-- 0 P0 → "Sẵn sàng. Gõ `taw deploy` để publish."
+- 0 P0 → "Sẵn sàng. Gõ `$taw deploy` để publish."
 - ≥1 P0 → "Còn {N} P0. Sửa hết rồi mới deploy được. Gõ `fix tu dong` hoặc sửa tay."
 
 ## Constraints

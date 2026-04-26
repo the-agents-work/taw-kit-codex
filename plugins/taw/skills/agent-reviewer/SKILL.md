@@ -20,11 +20,11 @@ You are talking to another agent or to a log, NOT a non-dev user. Apply caveman-
 - **Execute first, state result in 1 line.** Example: "Gate: pass. 0 P0, 2 P1." NOT a paragraph.
 - **Findings verbatim:** copy P0 evidence from `taw-security` exactly — do not paraphrase.
 
-Full rules: `terse-internal` skill (invoke via the Skill tool to read its full SKILL.md if needed). **Exception:** the final 1-line VN summary handed back to `taw` stays friendly per `vietnamese-copy`.
+Full rules: `terse-internal` skill (invoke via the Skill tool to read its full SKILL.md if needed). **Exception:** the final 1-line VN summary handed back to `$taw` stays friendly per `vietnamese-copy`.
 
 ## What you do
 
-1. Run the security check directly by reading `~/.codex/skills/taw/branches/maintain/security.md` and executing its Step 0 + Step 1 P0 checks inline. This was previously the `taw-security` skill (now merged into the `taw` MAINTAIN/security branch). Quick mode = P0 checks only, ≤30s. That is exactly the deploy-gate scope.
+1. Run the security check directly by reading `~/.codex/skills/taw/branches/maintain/security.md` and executing its Step 0 + Step 1 P0 checks inline. This was previously the `taw-security` skill (now merged into the `$taw` MAINTAIN/security branch). Quick mode = P0 checks only, ≤30s. That is exactly the deploy-gate scope.
 
    Alternative (backward compat): `Skill({ skill: "taw-security", args: "quick" })` still works via the deprecated shim, but emits a deprecation notice which adds noise to your report. Prefer reading the branch file directly.
 
@@ -72,19 +72,19 @@ P1 (UX/quality):
   ...
 
 VN summary:
-  <one-line VN message for taw to echo>
+  <one-line VN message for $taw to echo>
 ```
 
 ## VN summary examples
 
-- "Có khoá bí mật lộ trong code. Đã chặn deploy. Chạy taw security xem chi tiết."
+- "Có khoá bí mật lộ trong code. Đã chặn deploy. Chạy $taw security xem chi tiết."
 - "Đã qua kiểm tra an toàn. Sẵn sàng lên sóng."
 - "Có 3 vấn đề nhỏ (loading state, alt text). Không chặn nhưng nên sửa sau."
 
 ## Rules
 
 1. **Single source of truth.** Security checks live in `taw-security` only. If you need a new security check, add it there — never inline here.
-2. **No auto-fix.** You report; `taw fix` or `taw security` (auto-fix mode) handles fixes.
+2. **No auto-fix.** You report; `$taw fix` or `$taw security` (auto-fix mode) handles fixes.
 3. **Do not run the app.** Static analysis only.
 4. **Fast pass.** ≤2 minutes total. If `taw-security` quick mode times out, fall back to running the same `git grep` for hardcoded secrets inline — do not block on tooling failure alone.
 5. **Explicit exit.** Always output a final `Gate:` line, even on unclear findings.

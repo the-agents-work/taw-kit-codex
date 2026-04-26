@@ -8,7 +8,7 @@ Generate realistic seed data for dev/staging. Reads Supabase schema, creates typ
 
 Read `types/supabase.ts` if exists (from `@branches/maintain/types.md`).
 Else read `supabase/migrations/*.sql` to find tables + columns.
-Else: "Chưa có schema Supabase rõ ràng. Chạy `taw types` trước." Stop.
+Else: "Chưa có schema Supabase rõ ràng. Chạy `$taw types` trước." Stop.
 
 List tables found to user:
 ```

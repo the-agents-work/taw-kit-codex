@@ -1,6 +1,6 @@
 # Error Messages
 
-Load during Step 6 (error recovery) of `taw`. Pick the template matching the failure mode.
+Load during Step 6 (error recovery) of `$taw`. Pick the template matching the failure mode.
 
 ## Principles
 
@@ -15,9 +15,9 @@ Load during Step 6 (error recovery) of `taw`. Pick the template matching the fai
 ```
 Build failed after 2 attempts. Error details saved.
 You can:
-  1. Type `taw fix` to let me analyze and auto-fix
+  1. Type `$taw fix` to let me analyze and auto-fix
   2. Open `.taw/checkpoint.json` to see the details
-  3. Cancel and restart with a different description: `taw <new description>`
+  3. Cancel and restart with a different description: `$taw <new description>`
 ```
 
 ## Template: Install failed (npm install error)
@@ -26,8 +26,8 @@ You can:
 Package install failed. Usually a network or version conflict.
 Try:
   1. Check your internet
-  2. Run `npm cache clean --force`, then `taw fix`
-  3. If that still fails, type `taw fix --deep` (I'll wipe node_modules and reinstall)
+  2. Run `npm cache clean --force`, then `$taw fix`
+  3. If that still fails, type `$taw fix --deep` (I'll wipe node_modules and reinstall)
 ```
 
 ## Template: Deploy failed
@@ -35,7 +35,7 @@ Try:
 ```
 Build succeeded, but deploy failed.
 Your project still runs locally (type `npm run dev`).
-Retry deploy: `taw deploy`
+Retry deploy: `$taw deploy`
 Or deploy manually: `vercel --prod`
 ```
 
@@ -46,7 +46,7 @@ Missing environment variable: <VAR_NAME>.
 You need to create `.env.local` with this line:
   <VAR_NAME>=<value>
 How to get <VAR_NAME>: <docs-link>
-Then type `taw fix` again.
+Then type `$taw fix` again.
 ```
 
 ## Template: API key invalid (Claude rate limit or bad key)
@@ -81,7 +81,7 @@ To continue, commit first or stash: `git stash`
 ```
 Something unexpected went wrong: <1-line summary>
 Details saved to `.taw/checkpoint.json`.
-Try `taw fix`, or send the checkpoint file to support.
+Try `$taw fix`, or send the checkpoint file to support.
 ```
 
 ## Template: Clarification timeout
@@ -89,12 +89,12 @@ Try `taw fix`, or send the checkpoint file to support.
 ```
 You've been quiet for a while. Want to continue?
   - Type `yes` to proceed with defaults
-  - Type `taw <new description>` to start over
+  - Type `$taw <new description>` to start over
 ```
 
 ## Template: User interrupted (Ctrl+C mid-run)
 
 ```
 I was interrupted mid-step: <step name>
-Checkpoint saved. Type `taw fix` to pick up from where we stopped.
+Checkpoint saved. Type `$taw fix` to pick up from where we stopped.
 ```

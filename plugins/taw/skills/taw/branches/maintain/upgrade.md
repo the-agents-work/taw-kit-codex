@@ -122,7 +122,7 @@ Then `taw-commit`: `type=chore, scope=deps, subject="upgrade {main pkg} to vX"`
 ```
 ⚠️ Upgrade xong nhưng {build/test/type} lỗi.
 Chọn:
-  1. keep  — giữ version mới, fix thủ công (gõ taw fix)
+  1. keep  — giữ version mới, fix thủ công (gõ $taw fix)
   2. revert — quay lại bản cũ (safe, không mất gì)
   3. show  — xem chi tiết lỗi trước khi quyết
 ```
