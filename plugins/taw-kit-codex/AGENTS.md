@@ -8,7 +8,7 @@ A bundle of ~40 Vietnamese-friendly skills + 6 agent-role skills + 3 lifecycle h
 
 ## Single entrypoint: the `taw` skill
 
-Two ways the user invokes `taw`:
+Three ways the user invokes `taw`:
 
 **A) Auto-trigger via prose** (preferred — no special syntax). When the user types prose like:
 
@@ -24,9 +24,11 @@ Two ways the user invokes `taw`:
 
 → match against the `taw` skill description and fire it.
 
-**B) Explicit prose invocation** (e.g. `dung skill taw de lam cho toi shop ca phe`, `use the taw skill to add a contact form`). When the user names the skill in prose, invoke `taw` regardless of how plain the rest looks.
+**B) Explicit `$taw-kit-codex:taw` token** (Codex's native explicit-skill syntax, equivalent to Claude Code's `/taw`). Per Codex source code (`core-skills/src/render.rs`): *"If the user names a skill (with `$SkillName` or plain text), you must use that skill for that turn."* Use the full namespaced name because skills are scoped under plugin name.
 
-Codex CLI does NOT support custom user-defined slash commands (so no `/taw`) and the `@` prefix in the TUI is a file-picker, not a skill mention. There is no special prefix — the user types prose and either auto-trigger or explicit naming routes them to the `taw` skill.
+**C) Plain text mention** (e.g. `dung skill taw de lam cho toi shop ca phe`, `use the taw skill to add a contact form`).
+
+Codex CLI does NOT support custom user-defined slash commands (so no `/taw`), and the `@` prefix in the TUI is a file-picker, not a skill mention.
 
 In both cases: the `taw` skill classifies intent (BUILD / FIX / SHIP / MAINTAIN / ADVISOR) and loads exactly one branch file from `skills/taw/branches/` to execute. Do not try to do the work directly — load the branch file first, then follow it step-by-step.
 

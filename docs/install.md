@@ -53,14 +53,15 @@ codex plugin marketplace list
 ls ~/.codex/plugins/taw-kit-codex/skills | wc -l    # ~47 (40 skill + 6 agent + 1 README)
 ```
 
-Mở Codex và thử:
+Mở Codex và thử (1 trong 3 cách):
 
 ```
-> tao cho toi mot landing page ban tra sua          # auto-trigger qua prose
-> dung skill taw de tao landing page ban tra sua    # gọi rõ tên (khi auto không bắt)
+> tao cho toi mot landing page ban tra sua             # auto-trigger qua prose
+> $taw-kit-codex:taw tao landing page ban tra sua      # explicit (~/taw của Claude)
+> dung skill taw de tao landing page ban tra sua       # plain text mention
 ```
 
-Codex kích hoạt skill `taw`, vào nhánh BUILD. Codex KHÔNG hỗ trợ custom slash command nên không có `/taw`. `@` trong TUI là file picker, không phải skill mention — đừng gõ `@taw`, sẽ ra "no matches".
+Codex kích hoạt skill `taw`, vào nhánh BUILD. Codex KHÔNG hỗ trợ custom slash (không có `/taw`); `@` trong TUI là file picker, không phải skill mention — đừng gõ `@taw`, sẽ ra "no matches".
 
 ## 5. Nâng cấp
 
