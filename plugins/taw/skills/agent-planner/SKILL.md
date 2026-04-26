@@ -83,7 +83,7 @@ You have access to the `Skill` tool. Subagents do NOT auto-load skill descriptio
 
 ## Stack adaptation awareness (for existing-project plans)
 
-When planning a feature-add or maintain phase for an EXISTING project (detected by `.taw/intent.json.features` array having prior entries OR by the invocation being `/taw <add feature>` not `/taw build`):
+When planning a feature-add or maintain phase for an EXISTING project (detected by `.taw/intent.json.features` array having prior entries OR by the invocation being `$taw <add feature>` not `$taw build`):
 
 - Before writing phase files, inspect `package.json` to identify the real stack
 - In phase files, explicitly reference the EXISTING stack skills, not defaults

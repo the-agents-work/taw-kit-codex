@@ -1,6 +1,6 @@
 # Plan Bullet Format
 
-Load during Step 3 of `/taw`. Render exactly 3–5 bullets covering the dimensions below.
+Load during Step 3 of `$taw`. Render exactly 3–5 bullets covering the dimensions below.
 
 ## Format
 

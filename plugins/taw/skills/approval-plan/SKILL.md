@@ -15,9 +15,9 @@ Prevents surprises and builds trust with non-dev users who cannot read code diff
 
 ## When to Activate
 
-- Before `/taw` begins orchestrating a full build
-- Before `/taw-add` modifies existing files
-- Before `/taw-fix` applies a multi-file fix
+- Before `$taw` begins orchestrating a full build
+- Before `$taw add` modifies existing files
+- Before `$taw fix` applies a multi-file fix
 - Any time the scope of changes is more than 1 file
 
 ## Plan Format

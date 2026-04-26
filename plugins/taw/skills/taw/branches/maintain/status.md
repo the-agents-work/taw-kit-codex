@@ -6,12 +6,12 @@ Project health panel at a glance. Gathers state from git, package.json, build ca
 
 ## Step 0 — Detect kit-repo vs product folder
 
-Before running the dashboard, check if the user is running `/taw status` **inside the taw-kit repo itself** (not a built product). Heuristic:
+Before running the dashboard, check if the user is running `$taw status` **inside the taw-kit repo itself** (not a built product). Heuristic:
 
 ```bash
-if [ -d skills/taw ] && [ -d agents ] && [ -f VERSION ] && ! [ -f package.json ]; then
-  echo "You're inside the taw-kit source repo — /taw status dashboards work on projects BUILT with the kit, not on the kit itself."
-  echo "Cd into a folder where you ran /taw, or run /taw in an empty folder to create a new project."
+if [ -d skills$taw ] && [ -d agents ] && [ -f VERSION ] && ! [ -f package.json ]; then
+  echo "You're inside the taw-kit source repo — $taw status dashboards work on projects BUILT with the kit, not on the kit itself."
+  echo "Cd into a folder where you ran $taw, or run $taw in an empty folder to create a new project."
   exit 0
 fi
 ```
@@ -159,14 +159,14 @@ Pick the most relevant next action based on state:
 
 | Condition | Suggestion |
 |---|---|
-| `dirty > 0` | `/taw review` — có {dirty} file chưa commit, review trước khi push |
-| `unpushed > 0` && `dirty == 0` | `/taw review` — có {unpushed} commit chưa push lên remote |
-| `p0_findings > 0` | `/taw audit` — có {N} lỗi bảo mật P0, fix trước khi deploy |
-| `test_files == 0` | `/taw test` — chưa có test nào, nên gen cơ bản |
-| `last_build > 7 ngày` | `/taw fix` hoặc `npm run build` — kiểm tra build còn xanh không |
-| `url == null` && `p0 == 0` && `dirty == 0` | `/taw deploy` — sẵn sàng deploy |
-| `static_kb > 500` | `/taw perf` — bundle hơi to, check giùm |
-| tất cả OK | `/taw <tính năng mới>` — mọi thứ xanh, thêm gì mới không? |
+| `dirty > 0` | `$taw review` — có {dirty} file chưa commit, review trước khi push |
+| `unpushed > 0` && `dirty == 0` | `$taw review` — có {unpushed} commit chưa push lên remote |
+| `p0_findings > 0` | `$taw audit` — có {N} lỗi bảo mật P0, fix trước khi deploy |
+| `test_files == 0` | `$taw test` — chưa có test nào, nên gen cơ bản |
+| `last_build > 7 ngày` | `$taw fix` hoặc `npm run build` — kiểm tra build còn xanh không |
+| `url == null` && `p0 == 0` && `dirty == 0` | `$taw deploy` — sẵn sàng deploy |
+| `static_kb > 500` | `$taw perf` — bundle hơi to, check giùm |
+| tất cả OK | `$taw <tính năng mới>` — mọi thứ xanh, thêm gì mới không? |
 
 Emit exactly ONE suggestion — the highest-priority one from the table above.
 
@@ -188,7 +188,7 @@ rm -rf .taw/dashboard/
 - Read-only — NEVER modify code, never install packages
 - Parallel signal gathering — must complete in <10 seconds (without `--deep`)
 - Signals that fail (e.g. `git` not a repo) should degrade gracefully, not error the whole dashboard
-- If `.taw/` doesn't exist at all AND folder is NOT the kit source (Step 0 checks that) → emit: "Chưa phải dự án taw-kit. Gõ `/taw` để tạo mới, hoặc mở folder đã có dự án."
+- If `.taw/` doesn't exist at all AND folder is NOT the kit source (Step 0 checks that) → emit: "Chưa phải dự án taw-kit. Gõ `$taw` để tạo mới, hoặc mở folder đã có dự án."
 - Don't cache the security scan — it must re-run each invocation
 - Suggestion logic is deterministic (same state → same suggestion)
 - Use `command grep` (not bare `grep`) for boolean pipeline checks — Codex CLI's `grep` function wrapper returns non-POSIX exit codes that will corrupt the P0 counter

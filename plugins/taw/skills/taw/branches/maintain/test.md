@@ -71,7 +71,7 @@ import '@testing-library/jest-dom/vitest'
 
 ## Step 3 — Pick target files
 
-If user named a path (`/taw test lib/cart.ts`) → scope to that file + its callers.
+If user named a path (`$taw test lib/cart.ts`) → scope to that file + its callers.
 Else ask:
 ```
 Test cho phần nào? Ví dụ:
@@ -132,5 +132,5 @@ type=test, scope=<inferred>, subject="add tests for <files>"
 
 - NEVER rewrite the source file while generating tests — tests must match existing behaviour
 - NEVER mock at integration/RLS level — those need real DB
-- If tests fail due to a real bug (not test mistake), offer `/taw fix` instead of adjusting tests
+- If tests fail due to a real bug (not test mistake), offer `$taw fix` instead of adjusting tests
 - Budget: stop after 10 minutes, commit what's green, report what's red

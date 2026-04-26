@@ -1,6 +1,6 @@
-# Intent router — /taw single-entrypoint
+# Intent router — $taw single-entrypoint
 
-You are inside `/taw`. This file maps free-form user prose (EN or VN) to exactly ONE branch. Load the matching branch file and follow it. If the user's intent is ambiguous, ask ONE short clarifying question instead of guessing.
+You are inside `$taw`. This file maps free-form user prose (EN or VN) to exactly ONE branch. Load the matching branch file and follow it. If the user's intent is ambiguous, ask ONE short clarifying question instead of guessing.
 
 ## Tier 1 — 5 top-level intents
 
@@ -59,19 +59,19 @@ Common overlaps and how to resolve:
 
 ## Empty args
 
-If `/taw` is invoked with empty args, emit (VN default):
+If `$taw` is invoked with empty args, emit (VN default):
 
 ```
 taw-kit: anh muốn làm gì? Ví dụ:
-  /taw làm cho tôi một shop bán cà phê     (tạo dự án mới)
-  /taw thêm trang liên hệ                   (thêm tính năng)
-  /taw website lỗi, fix giùm                (auto-fix)
-  /taw deploy lên vercel                    (ship)
-  /taw test cái login                       (gen test)
-  /taw phân tích code auth                  (advisor — review)
-  /taw gợi ý tính năng mới                  (advisor — suggest)
-  /taw status                               (dashboard)
-  /taw nâng cấp next lên 15                 (upgrade deps)
+  $taw làm cho tôi một shop bán cà phê     (tạo dự án mới)
+  $taw thêm trang liên hệ                   (thêm tính năng)
+  $taw website lỗi, fix giùm                (auto-fix)
+  $taw deploy lên vercel                    (ship)
+  $taw test cái login                       (gen test)
+  $taw phân tích code auth                  (advisor — review)
+  $taw gợi ý tính năng mới                  (advisor — suggest)
+  $taw status                               (dashboard)
+  $taw nâng cấp next lên 15                 (upgrade deps)
 ```
 
 Then wait for reply and re-run classification.

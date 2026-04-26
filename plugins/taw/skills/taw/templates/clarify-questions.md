@@ -1,6 +1,6 @@
 # Clarify Questions Bank
 
-Load this file during Step 2 of `/taw`. Pick 3–5 questions matching the classified intent. Skip any question the user already answered in their initial prompt.
+Load this file during Step 2 of `$taw`. Pick 3–5 questions matching the classified intent. Skip any question the user already answered in their initial prompt.
 
 Every question has a sensible DEFAULT — if the user says "skip" or gives a non-answer, apply the default.
 

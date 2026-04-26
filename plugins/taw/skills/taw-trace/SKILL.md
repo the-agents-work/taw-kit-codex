@@ -78,8 +78,8 @@ git log --oneline <good>..<broken> -- <path-or-scope>
 
 - **Max 20 commits** per output unless user asks "tất cả"
 - Always truncate SHAs to 7 chars (user pastes back)
-- **Read-only** — NEVER run `git reset`, `git checkout <sha>`, `git revert`. If user asks rollback → emit: "taw: muốn revert abc1234? Gõ `/taw revert abc1234`" (routes to ROLLBACK branch)
-- If `.git/` missing: "taw: project chưa có git. Chạy `/taw build` hoặc `git init` trước."
+- **Read-only** — NEVER run `git reset`, `git checkout <sha>`, `git revert`. If user asks rollback → emit: "taw: muốn revert abc1234? Gõ `$taw revert abc1234`" (routes to ROLLBACK branch)
+- If `.git/` missing: "taw: project chưa có git. Chạy `$taw build` hoặc `git init` trước."
 
 ## Output convention
 
@@ -97,5 +97,5 @@ taw: 3 commit liên quan checkout —
 ## When to invoke
 
 - User asks "khi nào", "ai sửa", "commit nào", "lịch sử", "thay đổi gì"
-- Before `/taw fix`: surface last 5 commits touching the broken area
-- Before `/taw deploy`: show commits since last deploy tag (if exists)
+- Before `$taw fix`: surface last 5 commits touching the broken area
+- Before `$taw deploy`: show commits since last deploy tag (if exists)

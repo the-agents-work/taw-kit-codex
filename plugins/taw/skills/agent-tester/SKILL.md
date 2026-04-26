@@ -50,13 +50,13 @@ A short report with:
 
 - **Status** — `pass` | `fail`
 - **Check that failed** (if any) — name + 20-line log excerpt (not the full stack trace)
-- **VN-friendly summary** — 1-2 line Vietnamese translation of the failure that `/taw` can echo to the user if the fail bubbles up (use `error-to-vi` skill output here)
+- **VN-friendly summary** — 1-2 line Vietnamese translation of the failure that `$taw` can echo to the user if the fail bubbles up (use `error-to-vi` skill output here)
 
 If status is pass, add: "Đã qua kiểm thử. Sẵn sàng deploy."
 
 ## Rules
 
-1. **Do not fix.** On fail, you report. `/taw-fix` or fullstack-dev decides the fix.
+1. **Do not fix.** On fail, you report. `$taw fix` or fullstack-dev decides the fix.
 2. **Do not write tests.** Smoke checks above are enough for MVP. Unit tests are a post-launch phase.
 3. **Time limit: 3 minutes total.** If a check hangs, kill it and report timeout.
 4. **No destructive actions.** Never `rm`, never `git reset`, never modify source files.

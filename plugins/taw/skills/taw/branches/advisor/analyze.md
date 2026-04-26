@@ -4,7 +4,7 @@ Deep-read 1 feature/folder/file and produce an **opinionated** review: code qual
 
 **Prereq:** router classified `tier1 = ADVISOR`, `tier2 = analyze`.
 
-**Philosophy:** unlike `/taw review` (lint/type/test — objective), `analyze` gives **subjective expert opinion**. Direct, evidence-based, no hedging. Dev wants honesty, not politeness.
+**Philosophy:** unlike `$taw review` (lint/type/test — objective), `analyze` gives **subjective expert opinion**. Direct, evidence-based, no hedging. Dev wants honesty, not politeness.
 
 ## Step 0 — Ground rules (CRITICAL — follow strictly)
 
@@ -27,10 +27,10 @@ Parse user args:
 
 | Pattern | Target |
 |---|---|
-| `/taw analyze auth` | Feature by name — grep `app/`, `lib/`, `components/` for matching folder/file |
-| `/taw analyze app/checkout` | Path — read everything under |
-| `/taw analyze components/Cart.tsx` | Single file + its imports |
-| `/taw analyze architecture` | Whole-project structural review |
+| `$taw analyze auth` | Feature by name — grep `app/`, `lib/`, `components/` for matching folder/file |
+| `$taw analyze app/checkout` | Path — read everything under |
+| `$taw analyze components/Cart.tsx` | Single file + its imports |
+| `$taw analyze architecture` | Whole-project structural review |
 | empty | Ask: "Phân tích phần nào? Feature name hoặc path." |
 
 Resolve path:
@@ -166,7 +166,7 @@ P0 findings MUST have: file:line, evidence (1-line code), fix direction (1 sente
 
 ### Bước tiếp theo
 
-**Ưu tiên fix P0 #1** (`app/checkout/page.tsx:47`) — lỗi silent này sẽ ghi data rác vào DB production. Gõ `/taw fix` để em xử lý, hoặc sửa tay 3 dòng.
+**Ưu tiên fix P0 #1** (`app/checkout/page.tsx:47`) — lỗi silent này sẽ ghi data rác vào DB production. Gõ `$taw fix` để em xử lý, hoặc sửa tay 3 dòng.
 ```
 
 ### If nothing critical found:
@@ -186,7 +186,7 @@ NEVER end with "anh muốn em fix cái nào?". Instead commit:
 
 ```
 Em đề xuất: sửa P0 #1 + P0 #2 trước khi làm gì khác.
-Gõ /taw fix để em xử lý, hoặc /taw analyze tiếp phần khác.
+Gõ $taw fix để em xử lý, hoặc $taw analyze tiếp phần khác.
 ```
 
 ## Constraints
@@ -198,4 +198,4 @@ Gõ /taw fix để em xử lý, hoặc /taw analyze tiếp phần khác.
 - Don't flag patterns that are stylistic preferences (tabs vs spaces, `function` vs `const`)
 - Budget: ≤2 min for features <10 files, ≤5 min for whole-project architecture review
 - If target folder is empty or not found: emit "Không thấy `{target}`. Gõ `ls` folder nào có."
-- If analyzing your own generated code (built by `/taw build` recently): apply SAME rigor — don't grade on curve
+- If analyzing your own generated code (built by `$taw build` recently): apply SAME rigor — don't grade on curve

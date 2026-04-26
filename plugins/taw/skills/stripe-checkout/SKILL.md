@@ -22,7 +22,7 @@ If **installed + env present + routes exist** → read them, adapt. Don't overwr
 If **installed but routes missing** → add only what's missing.
 If **nothing** → new setup, Step 1.
 
-**Never run side-by-side with Polar.** If project has `@polar-sh/sdk`, ask user: "Dự án đang dùng Polar. Thêm Stripe vào song song, hay đổi hẳn Polar → Stripe (dùng `/taw đổi Polar sang Stripe`)?"
+**Never run side-by-side with Polar.** If project has `@polar-sh/sdk`, ask user: "Dự án đang dùng Polar. Thêm Stripe vào song song, hay đổi hẳn Polar → Stripe (dùng `$taw đổi Polar sang Stripe`)?"
 
 ## Step 1 — Install
 

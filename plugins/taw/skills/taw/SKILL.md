@@ -39,7 +39,7 @@ Broad-match Vietnamese + English so user can keep typing plain prose without re-
 
 **MAINTAIN→STACK-SWAP:** "swap X for Y", "replace X with Y", "migrate from X to Y", "doi X sang Y", "thay X bang Y", "doi polar sang stripe", "chuyen supabase sang drizzle", "bo shadcn dung radix".
 
-**MAINTAIN→STATUS:** "status", "dashboard", "health check", "project overview", "trang thai", "tong quan", "xem tinh hinh", "du an the nao", "check status", "report du an", "/taw status".
+**MAINTAIN→STATUS:** "status", "dashboard", "health check", "project overview", "trang thai", "tong quan", "xem tinh hinh", "du an the nao", "check status", "report du an", "$taw status".
 
 **MAINTAIN→MEMORY:** "memory", "agents.md", "bo nho", "bộ nhớ dự án", "gen agents.md", "init memory", "refresh memory", "update agents.md", "nest agents", "luu context", "lưu context du an", "nho nghiep vu", "check drift agents".
 
@@ -81,7 +81,7 @@ Write the routing decision to `.taw/intent.json`:
 
 ## Step 1.5 — Memory check (auto-prompt, once per project)
 
-**BEFORE loading any branch**, check if this project should have a `CLAUDE.md` but doesn't. This runs at the very first `/taw` invocation in a new-to-taw project, so non-dev users never have to know the `memory init` command exists.
+**BEFORE loading any branch**, check if this project should have a `CLAUDE.md` but doesn't. This runs at the very first `$taw` invocation in a new-to-taw project, so non-dev users never have to know the `memory init` command exists.
 
 Conditions ALL must be true to trigger the prompt:
 1. Current dir has `.git/` (it's a real repo, not a random folder)
@@ -107,7 +107,7 @@ Tạo không?
 Wait for reply.
 
 - `y` / `yes` / `có` / `ok` → load `@branches/maintain/memory.md` with `init` subcommand. On completion, continue with user's original intent (resume Step 2 with original routing decision).
-- `n` / `no` / `không` → `touch .taw/memory-declined` so next `/taw` doesn't ask again. Continue.
+- `n` / `no` / `không` → `touch .taw/memory-declined` so next `$taw` doesn't ask again. Continue.
 - `sau` / `later` / `skip` → Continue without marker (will re-prompt next session).
 - Any other reply treated as `sau`.
 
@@ -160,11 +160,11 @@ Between steps inside a branch, emit a short progress line:
 After a branch completes its main work, before emitting the final "Done" message:
 
 1. **Commit** — if the branch made code changes, invoke the `taw-commit` skill with the appropriate `type` (feat/fix/chore/refactor/perf/test/revert) that the branch specifies. Phase-less branches (add-feature, maintain/*) omit the `[P<n>]` tag.
-2. **Update checkpoint** — write `.taw/checkpoint.json` with `{status, last_branch, last_error?, deploy_url?}` so subsequent `/taw` invocations know the state.
-3. **Next-step hints** — in the final "Done" message, always suggest 2-3 relevant next commands. Always in the form `/taw <verb>`:
-   - After BUILD → `/taw deploy`, `/taw <new feature description>`
-   - After FIX → `/taw deploy`, `/taw review`
-   - After SHIP → `/taw <new feature>`, `/taw fix` (if anything broken)
+2. **Update checkpoint** — write `.taw/checkpoint.json` with `{status, last_branch, last_error?, deploy_url?}` so subsequent `$taw` invocations know the state.
+3. **Next-step hints** — in the final "Done" message, always suggest 2-3 relevant next commands. Always in the form `$taw <verb>`:
+   - After BUILD → `$taw deploy`, `$taw <new feature description>`
+   - After FIX → `$taw deploy`, `$taw review`
+   - After SHIP → `$taw <new feature>`, `$taw fix` (if anything broken)
    - After MAINTAIN/* → branch-specific hints
 
 ## Step 4 — Error recovery (branch-agnostic)
@@ -174,7 +174,7 @@ If a branch reports a failure it can't handle:
 2. Let the branch's own retry/revert logic run ONCE. If the branch escalates back here, do NOT retry again.
 3. Write `.taw/checkpoint.json`:
    ```json
-   {"status": "failed", "branch": "<name>", "last_error": "<compact>", "next_action": "Try /taw <suggested verb>"}
+   {"status": "failed", "branch": "<name>", "last_error": "<compact>", "next_action": "Try $taw <suggested verb>"}
    ```
 4. Emit the error template from `skills/taw/templates/error-messages.md` (translated to VN if user input was VN) with a pointer to the next action.
 
@@ -246,7 +246,7 @@ taw-kit defaults to **autonomous action for safe ops**, not "ask before everythi
 - After a successful `update` / `fix` / `sync` / `gen` step, DO NOT end with "Anh muốn em commit không? Hoặc làm X tiếp?" — auto-commit if change is safe, then output 1-line done.
 - DO NOT pro-actively propose 3-5 next-step options unless user explicitly asks "what next". Let user ask for the next thing.
 - DO NOT re-confirm a decision user already made in the current session.
-- Save proactive suggestions for `/taw status` or the single final "Done" line — never mid-flow.
+- Save proactive suggestions for `$taw status` or the single final "Done" line — never mid-flow.
 
 **Exception — safe-mode approval gate (BUILD branch only):** the Step 4 approval gate in BUILD is a DELIBERATE HARD-GATE because it trades 1 user message for preventing 5 minutes of wrong-direction build. This is the single approved interruption point per BUILD run. Other branches must NOT replicate this pattern.
 
@@ -277,7 +277,7 @@ This rule is absolute — any new branch/skill doing security checks or state-de
 
 ## Constraints
 
-- **One entrypoint, one command.** The old `/taw-new`, `/taw-add`, `/taw-fix`, `/taw-deploy`, `/taw-security` skills are kept as thin shims that redirect to `/taw`. Do NOT add new top-level `/taw-*` skills — add a new branch file under `branches/` instead.
+- **One entrypoint, one command.** The old `$taw build`, `$taw add`, `$taw fix`, `$taw deploy`, `$taw security` skills are kept as thin shims that redirect to `$taw`. Do NOT add new top-level `/taw-*` skills — add a new branch file under `branches/` instead.
 - **One approval gate per BUILD flow.** Branches MAINTAIN/* ask targeted confirmations as needed but never bundle a full project-wide approval step. FIX auto-fixes but asks before destructive actions. SHIP runs security as a blocking gate.
 - **Default stack**: Next.js 14 App Router + Tailwind + shadcn/ui + Supabase + Polar. Deploy default is Vercel. Override only if user explicitly asks or the project is Expo/mobile.
 - **Context budget**: if conversation grows past 150k tokens during a long branch (BUILD agent chain especially), compact via `.taw/artifacts/` on disk and summarize.
