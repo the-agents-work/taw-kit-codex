@@ -1,0 +1,30 @@
+{
+  "name": "taw-kit-codex",
+  "version": "0.1.0",
+  "description": "taw-kit ported to Codex CLI — bộ kit cho người không biết code, ra mắt sản phẩm thật chỉ bằng một câu tiếng Việt.",
+  "author": {
+    "name": "the-agents-work",
+    "url": "https://github.com/the-agents-work"
+  },
+  "homepage": "https://github.com/the-agents-work/taw-kit-codex",
+  "repository": "https://github.com/the-agents-work/taw-kit-codex",
+  "license": "Apache-2.0",
+  "keywords": ["taw", "vietnamese", "scaffold", "nextjs", "supabase", "non-developer", "codex"],
+  "skills": "./skills/",
+  "hooks": "./hooks.json",
+  "interface": {
+    "displayName": "taw-kit (Codex)",
+    "shortDescription": "Tạo, fix, deploy sản phẩm thật bằng tiếng Việt — port của taw-kit cho Codex CLI",
+    "longDescription": "Single-prompt builder cho người không biết code. Mô tả ý tưởng bằng tiếng Việt, kit tự lập kế hoạch, scaffold Next.js / Expo, code, test, review, deploy. Bundled gồm ~40 skills (Supabase auth, Stripe/Polar, Tailwind/shadcn, Expo, Sentry, GitHub Actions, vietnamese-copy, frontend-design, ...) + 6 agent roles (planner, researcher, fullstack-dev, mobile-dev, tester, reviewer) + hooks (permission classifier, auto-commit, session context).",
+    "developerName": "the-agents-work",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "websiteURL": "https://www.theagents.work/",
+    "defaultPrompt": [
+      "lam cho toi mot landing page ban ca phe",
+      "fix loi build, sua giup toi",
+      "deploy len vercel"
+    ],
+    "brandColor": "#0F766E"
+  }
+}

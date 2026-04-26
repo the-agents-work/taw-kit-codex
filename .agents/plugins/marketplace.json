@@ -1,0 +1,20 @@
+{
+  "name": "taw-kit-codex",
+  "interface": {
+    "displayName": "taw-kit (Codex)"
+  },
+  "plugins": [
+    {
+      "name": "taw-kit-codex",
+      "source": {
+        "source": "local",
+        "path": "./plugins/taw-kit-codex"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
