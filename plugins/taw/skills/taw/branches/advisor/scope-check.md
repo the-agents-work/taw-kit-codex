@@ -11,7 +11,7 @@ Compare branch diff against stated intent (`.taw/intent.json`, PR description, c
 Check all sources:
 
 ```bash
-# 1. taw intent (if project was built/extended via $taw)
+# 1. taw intent (if project was built/extended via taw)
 cat .taw/intent.json 2>/dev/null
 
 # 2. Recent feature entries
@@ -130,7 +130,7 @@ Flag intent items NOT visible in delivery:
 
 ### ⚠ Missing ({count}) — intent có nhưng diff không thấy
   1. Intent "add Playwright test cho checkout flow" — không có file `*.spec.*` mới
-     → Gõ `$taw test` để gen trước khi merge
+     → Gõ `taw test` để gen trước khi merge
   2. Intent "update README với env vars mới" — README không thay đổi
      → 1 commit docs là đủ
 
@@ -164,7 +164,7 @@ If scope creep touches >3 unrelated areas, suggest split:
 
 Lý do: reviewer sẽ review nhanh hơn, rollback an toàn hơn.
 
-Gõ `$taw review` cho workflow split branches, hoặc `ignore` để giữ PR này nguyên.
+Gõ `taw review` cho workflow split branches, hoặc `ignore` để giữ PR này nguyên.
 ```
 
 ## Constraints
@@ -176,4 +176,4 @@ Gõ `$taw review` cho workflow split branches, hoặc `ignore` để giữ PR n�
 - **Intent can be multi-source** — combine `.taw/intent.json` + PR body + TODOS.md, not just one
 - Ambiguous intent ("improve UX") → ask for clarification, don't pretend to verify
 - Git-managed files only — `.gitignore`d changes don't count either way
-- Don't critique the quality of delivered code (that's `$taw analyze`) — only scope fit
+- Don't critique the quality of delivered code (that's `taw analyze`) — only scope fit

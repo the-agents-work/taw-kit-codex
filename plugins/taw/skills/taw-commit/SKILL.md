@@ -62,7 +62,7 @@ else
 fi
 ```
 
-### CONTEXT mode (called by $taw orchestrator)
+### CONTEXT mode (called by taw orchestrator)
 
 Read `.taw/checkpoint.json`:
 ```json

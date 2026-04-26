@@ -117,7 +117,7 @@ If new errors appeared (e.g. places using `any` on supabase responses now fail):
 Đây là điều tốt — trước đây dùng `any` nên ẩn được.
 Chọn:
   1. show — xem danh sách
-  2. fix  — gọi $taw fix với lỗi type
+  2. fix  — gọi taw fix với lỗi type
   3. keep — em tự sửa
 ```
 

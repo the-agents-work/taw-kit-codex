@@ -10,9 +10,9 @@ Render ASCII diagram of code paths + user flows + test coverage status for a tar
 
 Same pattern as `@analyze.md` Step 1:
 ```
-$taw coverage auth        → feature name
-$taw coverage app/api     → path
-$taw coverage             → empty → ask "Check coverage cho phần nào?"
+taw coverage auth        → feature name
+taw coverage app/api     → path
+taw coverage             → empty → ask "Check coverage cho phần nào?"
 ```
 
 ## Step 2 — Detect test framework (detection-first)
@@ -150,16 +150,16 @@ Most important gaps:
 ────────────────────────────────────────────────
  ACTIONS
 ────────────────────────────────────────────────
-  $taw test unit lib/auth.ts        → gen 3 unit tests cho gaps có [UNIT]
-  $taw test e2e login flow          → gen Playwright cho gaps có [→E2E]
-  $taw fix                          → nếu gap là BUG thực (không chỉ thiếu test)
+  taw test unit lib/auth.ts        → gen 3 unit tests cho gaps có [UNIT]
+  taw test e2e login flow          → gen Playwright cho gaps có [→E2E]
+  taw fix                          → nếu gap là BUG thực (không chỉ thiếu test)
 ```
 
 **If no test framework installed:**
 Skip the ★ classification, show "NO TESTS" on all paths, emit at bottom:
 ```
 ⚠️ Project chưa có test framework. Em không biết path nào đã tested.
-Gõ `$taw test` để setup vitest/playwright trước.
+Gõ `taw test` để setup vitest/playwright trước.
 ```
 
 ## Step 8 — Prioritization rule (REGRESSION-AWARE)

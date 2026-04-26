@@ -29,7 +29,7 @@ Produce a numbered list where each step satisfies:
 
 ## Rendering contract
 
-Internal reasoning. The user does NOT see these steps unless they hit an error — then surface the last 3 steps as context for `$taw fix`.
+Internal reasoning. The user does NOT see these steps unless they hit an error — then surface the last 3 steps as context for `taw fix`.
 
 ## Example
 

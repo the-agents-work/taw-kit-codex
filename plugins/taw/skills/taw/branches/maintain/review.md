@@ -101,7 +101,7 @@ For each changed file in Step 1, check:
 If ANY check is a hard fail (tsc error / test fail / build fail / P0 security):
 ```
 🚨 Không nên push — còn {N} vấn đề nghiêm trọng.
-  Gõ `fix` để em thử fix auto, hoặc `$taw fix` cho lỗi build.
+  Gõ `fix` để em thử fix auto, hoặc `taw fix` cho lỗi build.
 ```
 
 ## Step 6 — Actions
@@ -114,7 +114,7 @@ Auto-fixable:
 - Security auto-fixable (P0-3, P0-6, P1-3) → delegate to `@branches/maintain/security.md` fix mode
 
 NOT auto-fixable (report only):
-- tsc errors (need real thinking — delegate to `$taw fix`)
+- tsc errors (need real thinking — delegate to `taw fix`)
 - Test failures (could be real bugs)
 - `any` types (need context)
 

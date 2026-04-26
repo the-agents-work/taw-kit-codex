@@ -242,7 +242,7 @@ Cleanup:
   ✓ Working tree sạch như trước
 
 Gõ:
-  $taw fix     → em fix chỗ tìm ra luôn
+  taw fix     → em fix chỗ tìm ra luôn
   thoat        → để anh tự sửa
 ```
 

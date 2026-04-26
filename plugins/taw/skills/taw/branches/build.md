@@ -69,7 +69,7 @@ WAIT. Do NOT spawn any agent until reply.
 
 - `yes` / `ok` / `có` / `được` / `ừ` / `chạy đi` / `lam di` → Step 5
 - `edit` / `sửa` → back to Step 2 with user edits
-- `cancel` / `hủy` → write `{"status":"cancelled"}` to `.taw/checkpoint.json`, emit "Cancelled. Type $taw again when ready.", exit
+- `cancel` / `hủy` → write `{"status":"cancelled"}` to `.taw/checkpoint.json`, emit "Cancelled. Type taw again when ready.", exit
 
 **HARD RULE:** Even with rich context, safe mode MUST emit the prompt and wait. User trades 1 message for the right to course-correct before 5 minutes of work.
 
@@ -98,15 +98,15 @@ Between steps emit `✓ Done: <3-word summary>` (e.g. `✓ Done: plan ready`).
 On agent failure:
 1. Compact error to ≤100 tokens
 2. Retry SAME agent ONCE with error as extra input
-3. If retry fails: write `.taw/checkpoint.json` with `{last_step, last_error, next_action: "run $taw with 'fix' request"}`, emit error template from `skills/taw/templates/error-messages.md`, stop
+3. If retry fails: write `.taw/checkpoint.json` with `{last_step, last_error, next_action: "run taw with 'fix' request"}`, emit error template from `skills/taw/templates/error-messages.md`, stop
 
 Never retry >1. Never silently skip.
 
 ### Step 7 — Deploy handoff
 
-On Step 5 success, load `@branches/ship.md` (same `$taw` skill, internal branch switch). It returns a live URL.
+On Step 5 success, load `@branches/ship.md` (same `taw` skill, internal branch switch). It returns a live URL.
 
-If SHIP branch fails, emit: "Build xong rồi nhưng deploy lỗi. Gõ `$taw deploy` để thử lại." Stop — code still usable locally.
+If SHIP branch fails, emit: "Build xong rồi nhưng deploy lỗi. Gõ `taw deploy` để thử lại." Stop — code still usable locally.
 
 ### Step 7.5 — Auto-maintain CLAUDE.md (opt-in, default on)
 
@@ -127,10 +127,10 @@ taw-kit: build xong! 🎉
   Project files: <project-path>
   CLAUDE.md:     ✓ đã cập nhật (giúp Claude nhớ dự án lần sau)
 
-Bước tiếp (anh nói bằng tiếng Việt, không cần gõ $taw nữa):
+Bước tiếp (anh nói bằng tiếng Việt, không cần gõ taw nữa):
   → "thêm tính năng <mô tả>"    (add feature)
   → "fix"                        (nếu có lỗi)
-  → "$taw status"                (xem tổng quan dự án)
+  → "taw status"                (xem tổng quan dự án)
 ```
 
 ---
@@ -176,7 +176,7 @@ Emit EXACTLY `Does this plan look good? (type: yes / edit / cancel)` and WAIT.
 
 - `yes` → Step A4
 - `edit` → back to A2 with edits
-- `cancel` → "Cancelled. Type $taw <description> to try again." Stop.
+- `cancel` → "Cancelled. Type taw <description> to try again." Stop.
 
 Write to `.taw/add-plan.md`.
 

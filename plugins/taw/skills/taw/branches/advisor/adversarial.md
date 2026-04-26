@@ -4,7 +4,7 @@ Red-team the current branch's diff. Actively tries to BREAK the code — find se
 
 **Prereq:** router classified `tier1 = ADVISOR`, `tier2 = adversarial`.
 
-**Philosophy:** `$taw review` does **defensive** checks (lint/type/test). This does **offensive** checks — "how would an attacker / chaos engineer break this?". Very different mindset.
+**Philosophy:** `taw review` does **defensive** checks (lint/type/test). This does **offensive** checks — "how would an attacker / chaos engineer break this?". Very different mindset.
 
 ## Step 0 — Scope gate (MANDATORY)
 
@@ -21,7 +21,7 @@ Tier selection:
 - `50-199` → **MEDIUM tier** (1 pass)
 - `200+` → **LARGE tier** (2 passes)
 
-User can override: `$taw adversarial --full` always runs LARGE regardless of size.
+User can override: `taw adversarial --full` always runs LARGE regardless of size.
 
 ## Step 1 — Gather diff
 
@@ -178,13 +178,13 @@ Each finding gets:
 ### Next
 
 {If BLOCK MERGE:}
-  $taw fix — em xử lý CRITICAL theo thứ tự
+  taw fix — em xử lý CRITICAL theo thứ tự
 
 {If CAUTION:}
   Fix HIGH hoặc gõ "deploy luon" nếu anh chấp nhận rủi ro
 
 {If SHIP IT:}
-  $taw deploy — sẵn sàng
+  taw deploy — sẵn sàng
 ```
 
 ## Step 6 — Cross-model second opinion (OPTIONAL, only if `claude` CLI available)
@@ -212,7 +212,7 @@ For future pattern recognition — if same repo keeps producing CRITICAL in same
 - **Evidence-first** — every CRITICAL has file:line + attack scenario + fix direction
 - **No false positives** — if unsure something IS an attack, rank as MEDIUM or NOTE, not CRITICAL
 - **Scope gate is mandatory** — don't waste tokens red-teaming 20-line diffs
-- **Don't duplicate `$taw review`** — lint/type/test issues belong there, not here
+- **Don't duplicate `taw review`** — lint/type/test issues belong there, not here
 - **No fluff verdicts** — "overall code is OK" is not a finding. Either list specifics or declare 0 findings cleanly.
 - Budget: MEDIUM tier <2 min, LARGE tier <5 min
-- Never auto-fix — this branch REPORTS, user decides + fixes manually or via `$taw fix`
+- Never auto-fix — this branch REPORTS, user decides + fixes manually or via `taw fix`
