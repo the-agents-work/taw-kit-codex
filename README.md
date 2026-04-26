@@ -29,12 +29,13 @@
 > kiem tra bao mat                      → audit P0/P1/P2
 ```
 
-**2) Explicit `$skill-name`** (tương đương `/taw` của Claude):
+**2) Explicit `$taw`** (tương đương `/taw` của Claude — ngắn nhất):
 ```
-> $taw-kit-codex:taw lam shop ca phe
-> $taw-kit-codex:taw deploy
+> $taw lam shop ca phe
+> $taw deploy
+> $taw status
 ```
-Phải gõ full namespace `taw-kit-codex:taw` vì skill thuộc plugin `taw-kit-codex`. Codex bắt buộc dùng skill này khi thấy `$<name>` token.
+Skills cài vào user-scope `~/.codex/skills/` nên không cần namespace prefix. Codex bắt buộc dùng skill khi thấy `$<name>` token.
 
 **3) Plain text mention** (khi quên `$`):
 ```
@@ -48,7 +49,7 @@ Phải gõ full namespace `taw-kit-codex:taw` vì skill thuộc plugin `taw-kit-
 
 ## Bạn nhận được gì
 
-- **~40 skills, 6 agent-roles, 3 hooks** — đóng gói thành 1 Codex plugin, cài vào `~/.codex/plugins/taw-kit-codex/`
+- **~40 skills, 6 agent-roles, 3 hooks** — đóng gói thành 1 Codex plugin, cài vào `~/.codex/plugins/taw/`
 - **1 entrypoint duy nhất `taw`** — router 2 tầng tự hiểu tạo mới / thêm / sửa / deploy / test / nâng cấp / dọn code / rollback / refactor / audit bảo mật
 - **Stack adaptation** — mặc định Next.js + Supabase + Polar cho project mới, nhưng TỰ DETECT project hiện tại đang dùng Stripe/Drizzle/Clerk... và respect, không ghi đè
 - **Tự maintain AGENTS.md** — kit tạo + cập nhật file memory cho Codex sau mỗi run. Codex đọc lại mỗi session → tiết kiệm token + trả lời chính xác hơn cho repo lớn
@@ -79,11 +80,11 @@ bash ~/.taw-kit-codex/scripts/install.sh
 Trình cài đặt sẽ:
 1. Phát hiện Codex CLI (báo lỗi nếu chưa cài).
 2. Backup plugin cũ nếu có.
-3. Copy plugin vào `~/.codex/plugins/taw-kit-codex/`.
+3. Copy plugin vào `~/.codex/plugins/taw/`.
 4. Tạo / update `~/.agents/plugins/marketplace.json` để Codex thấy plugin.
 5. Báo số skill, hook đã cài.
 
-Cài lại / nâng cấp: chạy lại lệnh trên, hoặc `bash ~/.codex/plugins/taw-kit-codex/scripts/install.sh`.
+Cài lại / nâng cấp: chạy lại lệnh trên, hoặc `bash ~/.codex/plugins/taw/scripts/install.sh`.
 
 ---
 
@@ -110,7 +111,7 @@ Codex sẽ tự nhận skill `taw`, hỏi 3–5 câu cho rõ yêu cầu, hiển 
 
 | Tính năng | taw-kit (Claude) | taw-kit-codex |
 |-----------|------------------|---------------|
-| Gọi rõ ràng | `/taw <prose>` | `$taw-kit-codex:taw <prose>` (explicit) — `@` không phải skill mention, `/` không có custom |
+| Gọi rõ ràng | `/taw <prose>` | `$taw <prose>` (explicit) — `@` không phải skill mention, `/` không có custom |
 | Auto-trigger qua prose | Có | Có (cùng cơ chế description match) |
 | Subagent chạy song song | 2 researcher song song | Tuần tự (chậm hơn ~30s) |
 | Skills format | Giống nhau | Giống nhau (cùng `name` + `description` frontmatter) |

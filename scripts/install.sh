@@ -7,7 +7,7 @@
 
 set -euo pipefail
 
-PLUGIN_NAME="taw-kit-codex"
+PLUGIN_NAME="taw"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 PLUGIN_DIR="$REPO_ROOT/plugins/$PLUGIN_NAME"

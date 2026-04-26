@@ -24,7 +24,7 @@ Three ways the user invokes `taw`:
 
 → match against the `taw` skill description and fire it.
 
-**B) Explicit `$taw-kit-codex:taw` token** (Codex's native explicit-skill syntax, equivalent to Claude Code's `/taw`). Per Codex source code (`core-skills/src/render.rs`): *"If the user names a skill (with `$SkillName` or plain text), you must use that skill for that turn."* Use the full namespaced name because skills are scoped under plugin name.
+**B) Explicit `$taw` token** (Codex's native explicit-skill syntax, equivalent to Claude Code's `/taw`). Per Codex source code (`core-skills/src/render.rs`): *"If the user names a skill (with `$SkillName` or plain text), you must use that skill for that turn."* Skills installed in user-scope `~/.codex/skills/` need no namespace prefix.
 
 **C) Plain text mention** (e.g. `dung skill taw de lam cho toi shop ca phe`, `use the taw skill to add a contact form`).
 

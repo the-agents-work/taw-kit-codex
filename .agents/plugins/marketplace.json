@@ -1,14 +1,14 @@
 {
-  "name": "taw-kit-codex",
+  "name": "taw",
   "interface": {
     "displayName": "taw-kit (Codex)"
   },
   "plugins": [
     {
-      "name": "taw-kit-codex",
+      "name": "taw",
       "source": {
         "source": "local",
-        "path": "./plugins/taw-kit-codex"
+        "path": "./plugins/taw"
       },
       "policy": {
         "installation": "AVAILABLE",

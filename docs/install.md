@@ -50,14 +50,14 @@ TAW_YES=1 bash ~/.taw-kit-codex/scripts/install.sh
 
 ```bash
 codex plugin marketplace list
-ls ~/.codex/plugins/taw-kit-codex/skills | wc -l    # ~47 (40 skill + 6 agent + 1 README)
+ls ~/.codex/plugins/taw/skills | wc -l    # ~47 (40 skill + 6 agent + 1 README)
 ```
 
 Mở Codex và thử (1 trong 3 cách):
 
 ```
 > tao cho toi mot landing page ban tra sua             # auto-trigger qua prose
-> $taw-kit-codex:taw tao landing page ban tra sua      # explicit (~/taw của Claude)
+> $taw tao landing page ban tra sua          # explicit (~/taw của Claude)
 > dung skill taw de tao landing page ban tra sua       # plain text mention
 ```
 
@@ -82,7 +82,7 @@ git pull
 ## 6. Gỡ
 
 ```bash
-rm -rf ~/.codex/plugins/taw-kit-codex
+rm -rf ~/.codex/plugins/taw
 # Sau đó xoá entry "taw-kit-codex" khỏi ~/.agents/plugins/marketplace.json (sửa tay)
 ```
 
@@ -92,13 +92,13 @@ rm -rf ~/.codex/plugins/taw-kit-codex
 Cài Codex CLI trước (mục 2).
 
 ### Skill không tự kích hoạt
-- Kiểm tra plugin có thực sự ở `~/.codex/plugins/taw-kit-codex/`.
+- Kiểm tra plugin có thực sự ở `~/.codex/plugins/taw/`.
 - Kiểm tra `marketplace.json` có entry không: `cat ~/.agents/plugins/marketplace.json`.
 - Restart Codex (gõ `/quit` rồi mở lại).
 
 ### Hook không chạy
-- `chmod +x ~/.codex/plugins/taw-kit-codex/hooks/*.sh`
-- Kiểm tra `~/.codex/plugins/taw-kit-codex/hooks.json` có path đúng không.
+- `chmod +x ~/.codex/plugins/taw/hooks/*.sh`
+- Kiểm tra `~/.codex/plugins/taw/hooks.json` có path đúng không.
 - Tạm thời tắt: rename `hooks.json` → `hooks.json.disabled` rồi restart Codex.
 
 ### Cần API key thay vì ChatGPT subscription
