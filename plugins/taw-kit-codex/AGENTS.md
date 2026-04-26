@@ -8,7 +8,9 @@ A bundle of ~40 Vietnamese-friendly skills + 6 agent-role skills + 3 lifecycle h
 
 ## Single entrypoint: the `taw` skill
 
-When the user types prose like:
+Two ways the user invokes `taw`:
+
+**A) Auto-trigger via prose** (preferred — no special syntax). When the user types prose like:
 
 - `lam cho toi mot landing page ban ca phe` (build a coffee landing page)
 - `them trang lien he` (add a contact page)
@@ -20,7 +22,11 @@ When the user types prose like:
 - `lui lai ban hom qua` (rollback to yesterday's version)
 - `kiem tra bao mat` (security audit)
 
-→ trigger the **`taw`** skill. It classifies intent (BUILD / FIX / SHIP / MAINTAIN / ADVISOR) and loads exactly one branch file from `skills/taw/branches/` to execute. Do not try to do the work directly — load the branch file first, then follow it step-by-step.
+→ match against the `taw` skill description and fire it.
+
+**B) Explicit `@taw` mention.** When the user prefixes their prompt with `@taw` (e.g. `@taw lam cho toi shop ca phe`, `@taw deploy`, `@taw status`), invoke the `taw` skill regardless of how plain the prose looks. `@taw` is the Codex CLI equivalent of Claude Code's `/taw` slash command (Codex does not support custom user-defined slash commands).
+
+In both cases: the `taw` skill classifies intent (BUILD / FIX / SHIP / MAINTAIN / ADVISOR) and loads exactly one branch file from `skills/taw/branches/` to execute. Do not try to do the work directly — load the branch file first, then follow it step-by-step.
 
 ## Language rule (HARD)
 
@@ -30,7 +36,7 @@ Detect the language of the user's input. If they write Vietnamese (or VN-style m
 
 - **Subagents**: original ran `agent-planner`, `agent-researcher` x2, `agent-fullstack-dev`, `agent-tester`, `agent-reviewer` in a chain with parallel researchers. Codex CLI runs them **sequentially in-context** by invoking each `agent-*` skill. Total time ~30-60s slower; functionality identical.
 - **Hooks**: lifecycle hook JSON shape matches Claude Code 1:1 (`PreToolUse`, `PostToolUse`, `SessionStart`, etc.). All three taw-kit hooks ported as-is.
-- **Slash commands**: Codex does not support custom user-defined slash commands. Trigger the `taw` skill via prose match — no `/taw` prefix needed.
+- **Slash commands**: Codex does not support custom user-defined slash commands. Trigger the `taw` skill via prose match (no prefix needed) or via `@taw` mention syntax.
 - **Settings**: replaced Claude `settings.json` with Codex `~/.codex/config.toml` — see `docs/install.md`.
 
 ## Skill discovery priority

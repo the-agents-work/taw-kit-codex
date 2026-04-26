@@ -13,8 +13,9 @@
   → trả về URL đã chạy
 ```
 
-**Không cần gõ `/taw`.** Codex tự kích hoạt skill khi bạn mô tả việc muốn làm bằng tiếng Việt — tạo mới, thêm tính năng, sửa lỗi, deploy, test, nâng cấp, dọn code, tối ưu, lùi bản — kit tự hiểu và chạy đúng nhánh.
+**Codex không có custom slash command** (khác Claude Code không có `/taw`). 2 cách gọi:
 
+**1) Auto-trigger qua prose** (khuyên dùng — đỡ gõ):
 ```
 > lam cho toi mot shop ca phe          → tạo mới
 > them trang lien he                    → thêm tính năng
@@ -27,6 +28,15 @@
 > lui lai ban hom qua                   → rollback code + deploy
 > kiem tra bao mat                      → audit P0/P1/P2
 ```
+
+**2) `@taw` mention** (khi muốn ép kit chạy hoặc auto-trigger không bắt):
+```
+> @taw lam cho toi shop ca phe
+> @taw deploy
+> @taw status
+```
+
+`@taw` ↔ `/taw` của Claude Code — tương đương 1:1.
 
 ---
 
@@ -94,7 +104,8 @@ Codex sẽ tự nhận skill `taw`, hỏi 3–5 câu cho rõ yêu cầu, hiển 
 
 | Tính năng | taw-kit (Claude) | taw-kit-codex |
 |-----------|------------------|---------------|
-| Slash command `/taw` | Có | Không (Codex chưa hỗ trợ custom slash). Trigger qua trigger phrase tự nhiên. |
+| Gọi rõ ràng | `/taw <prose>` | `@taw <prose>` (Codex không cho custom slash) |
+| Auto-trigger qua prose | Có | Có (cùng cơ chế description match) |
 | Subagent chạy song song | 2 researcher song song | Tuần tự (chậm hơn ~30s) |
 | Skills format | Giống nhau | Giống nhau (cùng `name` + `description` frontmatter) |
 | Hooks (PreToolUse/PostToolUse/SessionStart/...) | Có | Có (cùng JSON shape) |
