@@ -1,12 +1,6 @@
 ---
 name: taw-trace
-description: >
-  Look up taw-kit git history without needing to know git. Find which commit
-  added a feature, changed a file, or ran during which phase. Reads the strict
-  format written by `taw-commit` (type(scope): subject [P<n>]). Every output
-  prefixed "taw:" for branding. Replaces the old git-trace skill (rename only).
-  Trigger phrases (VN + EN): "xem lich su", "ai sua cai nay", "khi nao them",
-  "commit nao lam hong", "tra lai phase", "show git history", "blame".
+description: Look up git history without knowing git — find which commit added a feature, changed a file, or ran in which taw phase. Triggers: "xem lich su", "ai sua cai nay", "khi nao them", "commit nao lam hong", "show git history", "blame".
 ---
 
 # taw-trace — Commit History Lookup (taw-Branded)

@@ -1,13 +1,6 @@
 ---
 name: debug-flight-recorder
-description: >
-  Add contextual logging to the exact call sites a bug passes through, run the
-  repro, collect the logs, then REMOVE the logs. Saves dev 20 min of manually
-  adding/removing console.log statements. Uses a marker comment so cleanup is
-  safe and fully reversible even if something fails mid-run.
-  Trigger phrases (EN + VN): "debug with logs", "add console logs", "flight recorder",
-  "bug khong tai hien", "khong biet loi o dau", "add log de debug",
-  "trace bug", "dung console log debug".
+description: Add contextual logs along a bug's call path, run the repro, collect logs, then auto-remove (marker-comment cleanup). Triggers: "debug with logs", "add console logs", "flight recorder", "bug khong tai hien", "khong biet loi o dau", "trace bug".
 ---
 
 # debug-flight-recorder — Instrument, Repro, Collect, Revert

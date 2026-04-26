@@ -1,6 +1,6 @@
 ---
 name: agent-mobile-dev
-description: React Native (Expo) developer role for taw-kit-codex. Implements mobile screens, navigation, native modules, and platform integrations from a task description or phase file. Counterpart of agent-fullstack-dev for web. Invoked by the /taw skill (BUILD branch Step 5) when project target is mobile or hybrid. Use when generating or extending Expo React Native code.
+description: Internal taw-kit-codex agent role — React Native (Expo) developer. Invoked only by the `taw` skill orchestrator (BUILD branch Step 5) when project target is mobile or hybrid.
 ---
 
 # mobile-dev agent

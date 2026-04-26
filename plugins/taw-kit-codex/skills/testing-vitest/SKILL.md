@@ -1,11 +1,6 @@
 ---
 name: testing-vitest
-description: >
-  Set up and write Vitest unit/component tests for Next.js / React projects.
-  Detection-first: adapts to whatever test runner is already installed. Used
-  by branches/maintain/test.md when gen'ing unit or component tests.
-  Trigger phrases (EN + VN): "vitest setup", "unit test", "gen test", "viết test",
-  "test component", "jsdom test", "@testing-library".
+description: Set up + write Vitest unit/component tests for Next.js/React. Detection-first. Triggers: "vitest setup", "unit test", "gen test", "viet test", "test component", "jsdom test", "@testing-library".
 ---
 
 # testing-vitest — Vitest Setup + Patterns

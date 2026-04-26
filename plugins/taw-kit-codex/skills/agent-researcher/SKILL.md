@@ -1,6 +1,6 @@
 ---
 name: agent-researcher
-description: Documentation researcher role for taw-kit-codex. Fetches focused documentation or implementation examples for a specific technology, API shape, or pattern the taw-kit stack needs. Invoked by the /taw skill (BUILD branch Step 5) after agent-planner produces phase files — Codex runs researchers SEQUENTIALLY (Claude Code original ran them in parallel). Use when phase files reference an unfamiliar API or library version.
+description: Internal taw-kit-codex agent role — documentation researcher. Invoked only by the `taw` skill orchestrator (BUILD branch Step 5) to fetch focused docs for unfamiliar APIs/libraries.
 ---
 
 # researcher agent

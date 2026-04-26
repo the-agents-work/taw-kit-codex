@@ -1,11 +1,6 @@
 ---
 name: dep-upgrade-safe
-description: >
-  Safe dependency upgrade reference: breaking-change notes for common taw-kit
-  deps (Next.js, React, Supabase, Tailwind, TypeScript, shadcn), codemod commands,
-  and a standard safety protocol. Used by branches/maintain/upgrade.md.
-  Trigger phrases (EN + VN): "breaking change", "codemod", "upgrade next",
-  "upgrade react", "nang cap an toan", "cap nhat deps", "migration guide".
+description: Safe dep upgrade refs (Next.js/React/Supabase/Tailwind/TS/shadcn) + codemods + safety protocol. Triggers: "breaking change", "codemod", "upgrade next", "upgrade react", "nang cap", "cap nhat deps", "migration guide".
 ---
 
 # dep-upgrade-safe — Breaking Change Cheatsheet

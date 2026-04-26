@@ -1,11 +1,6 @@
 ---
 name: testing-playwright
-description: >
-  Set up and write Playwright E2E tests for Next.js projects. Detection-first —
-  adapts to existing Playwright/Cypress setup if present. Referenced by
-  branches/maintain/test.md when gen'ing end-to-end tests.
-  Trigger phrases (EN + VN): "playwright", "e2e test", "end to end", "test luong",
-  "browser test", "test user flow", "cypress".
+description: Playwright E2E tests for Next.js. Detection-first (adapts to existing Playwright/Cypress). Triggers: "playwright", "e2e test", "end to end", "test luong", "browser test", "test user flow", "cypress".
 ---
 
 # testing-playwright — E2E Patterns

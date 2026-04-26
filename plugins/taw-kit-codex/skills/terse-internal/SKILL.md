@@ -1,13 +1,6 @@
 ---
 name: terse-internal
-description: >
-  Caveman-style terse output rules for AGENT-INTERNAL work only (planner,
-  researcher, fullstack-dev, tester, reviewer, debug). Cuts ~60-70% of output
-  tokens by killing preamble, postamble, tool narration, and filler. Never
-  activates for user-facing Vietnamese output (taw, taw-add, taw-new,
-  approval-plan, vietnamese-copy, error-to-vi hints shown to user). Inspired
-  by JuliusBrussee/caveman but scoped so non-dev VN users still get friendly
-  hand-holding in their language.
+description: Internal taw-kit-codex skill — terse output rules for agent-internal work (cuts ~60% tokens). Loaded by `agent-*` skills only. Never triggered by user prose.
 ---
 
 # terse-internal

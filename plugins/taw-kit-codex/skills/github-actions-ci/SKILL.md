@@ -1,12 +1,6 @@
 ---
 name: github-actions-ci
-description: >
-  Generate GitHub Actions CI workflows for taw-kit Next.js / Expo projects.
-  Detection-first — reads package.json scripts and existing .github/workflows/
-  to avoid overwriting user's custom CI. Covers lint/type/test/build matrix,
-  Playwright browsers, Supabase schema checks, and optional preview deploys.
-  Trigger phrases (EN + VN): "github actions", "ci cd", "set up ci",
-  "gen workflow", "tao ci", "chay test tren github", "workflow yaml".
+description: Generate GitHub Actions CI workflows for Next.js/Expo (lint/type/test/build matrix, Playwright, Supabase schema, preview deploys). Detection-first — won't overwrite user's CI. Triggers: "github actions", "ci cd", "set up ci", "tao ci", "chay test tren github", "workflow yaml".
 ---
 
 # github-actions-ci — Workflow Generator

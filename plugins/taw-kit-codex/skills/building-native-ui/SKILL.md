@@ -1,13 +1,6 @@
 ---
 name: building-native-ui
-description: >
-  Complete guide for building beautiful native UIs with Expo Router (file-based
-  routing, like Next.js App Router but for mobile). Covers fundamentals, styling,
-  components, navigation, animations, patterns, and native tabs. Mobile counterpart
-  of `nextjs-app-router` skill — fullstack-dev consults THIS for mobile projects,
-  `nextjs-app-router` for web. User-visible strings match the user's input language
-  (Vietnamese by default for VN users). Trigger phrases (EN + VN): "expo router",
-  "react native ui", "build mobile screen", "tao man hinh app", "navigation mobile".
+description: Build native UIs with Expo Router (file-based routing for mobile). Mobile counterpart of `nextjs-app-router`. Triggers: "expo router", "react native ui", "build mobile screen", "tao man hinh app", "navigation mobile".
 version: 1.0.1
 license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo, vendored into taw-kit)
 ---

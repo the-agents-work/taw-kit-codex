@@ -1,14 +1,6 @@
 ---
 name: taw-rn-supabase
-description: >
-  Wire Supabase JS client into a React Native (Expo) taw-kit project: session
-  persistence via AsyncStorage, magic-link OAuth callback via expo-linking deep
-  links, Realtime subscriptions on RN, and shared TypeScript types with the
-  Next.js webapp twin (taw-kit's typical web<->mobile pair pattern). This is the
-  mobile counterpart of `auth-magic-link` (web). User-visible strings match the
-  user's input language (Vietnamese by default for VN users). Trigger phrases
-  (EN + VN): "supabase react native", "supabase mobile", "auth mobile expo",
-  "magic link mobile", "tich hop supabase vao app", "supabase deep link".
+description: Wire Supabase JS into Expo React Native (AsyncStorage session, magic-link via expo-linking, Realtime, shared TS types with web twin). Mobile counterpart of `auth-magic-link`. Triggers: "supabase react native", "supabase mobile", "auth mobile expo", "magic link mobile", "supabase deep link", "tich hop supabase vao app".
 ---
 
 # taw-rn-supabase

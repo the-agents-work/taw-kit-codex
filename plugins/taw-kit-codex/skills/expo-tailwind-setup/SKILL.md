@@ -1,13 +1,6 @@
 ---
 name: expo-tailwind-setup
-description: >
-  Set up Tailwind CSS v4 in Expo with react-native-css and NativeWind v5 for
-  universal styling across iOS / Android / Web. Used by fullstack-dev when a
-  taw-kit project targets mobile (React Native / Expo) instead of, or in
-  addition to, Next.js. User-visible strings match the user's input language
-  (Vietnamese by default for VN users). Trigger phrases (EN + VN):
-  "expo tailwind", "nativewind setup", "style react native", "tao app mobile
-  voi tailwind", "cai dat nativewind".
+description: Set up Tailwind v4 + NativeWind v5 in Expo for universal styling (iOS/Android/Web). Triggers: "expo tailwind", "nativewind setup", "style react native", "tao app mobile voi tailwind", "cai dat nativewind".
 version: 1.0.0
 license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo, vendored into taw-kit)
 ---

@@ -1,13 +1,6 @@
 ---
 name: expo-deployment
-description: >
-  Deploy Expo (React Native) apps to iOS App Store, Android Play Store, and
-  web via EAS Build + Submit. Mobile-equivalent of `taw-deploy` (which targets
-  Vercel / Docker / VPS for Next.js). Use this when a taw-kit project's intent
-  is mobile. User-visible strings match the user's input language (Vietnamese
-  by default for VN users). Trigger phrases (EN + VN): "deploy expo app",
-  "publish to app store", "eas build", "day app len store", "deploy app
-  mobile", "len app store".
+description: Deploy Expo apps to iOS/Android/Web via EAS Build + Submit. Mobile equivalent of taw SHIP branch (which targets Vercel/Docker/VPS). Triggers: "deploy expo app", "publish to app store", "eas build", "day app len store", "deploy app mobile", "len app store".
 version: 1.0.0
 license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo, vendored into taw-kit)
 ---

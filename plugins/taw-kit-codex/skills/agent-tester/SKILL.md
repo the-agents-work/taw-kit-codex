@@ -1,6 +1,6 @@
 ---
 name: agent-tester
-description: Build + smoke-test validator role for taw-kit-codex. Validates that a taw-kit project builds, boots, and passes smoke checks before deploy. Invoked by the /taw skill (BUILD branch Step 5) after agent-fullstack-dev reports ready. Translates build errors to Vietnamese for non-dev users via the error-to-vi skill.
+description: Internal taw-kit-codex agent role — build + smoke-test validator. Invoked only by the `taw` skill orchestrator (BUILD branch Step 5). Runs `npm run build` + dev smoke; translates errors to Vietnamese.
 ---
 
 # tester agent

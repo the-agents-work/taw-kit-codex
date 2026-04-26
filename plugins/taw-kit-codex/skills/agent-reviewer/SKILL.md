@@ -1,6 +1,6 @@
 ---
 name: agent-reviewer
-description: Security + quality reviewer role for taw-kit-codex. Runs a quick pass on the final project state before deploy. Invoked by the /taw skill (BUILD branch Step 5) after agent-tester reports pass. Wraps MAINTAIN/security branch in quick mode (P0-only). Non-blocking unless a P0 issue is found. Use as a final gate before SHIP branch handoff.
+description: Internal taw-kit-codex agent role — security + quality reviewer (P0-only quick pass). Invoked only by the `taw` skill orchestrator (BUILD branch Step 5) as the final gate before SHIP.
 ---
 
 # reviewer agent

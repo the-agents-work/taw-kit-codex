@@ -1,14 +1,6 @@
 ---
 name: stripe-checkout
-description: >
-  Stripe Checkout + webhook integration for Next.js App Router. Alternative to
-  Polar (payment-integration skill). Detection-first: if project already has
-  Stripe installed, adapts to existing setup; only new setup installs from scratch.
-  Covers one-time products, subscriptions, and the webhook signature verification
-  pattern that security-audit requires.
-  Trigger phrases (EN + VN): "stripe", "stripe checkout", "card payment",
-  "stripe webhook", "subscription billing", "thanh toan the",
-  "tich hop stripe", "doi polar sang stripe".
+description: Stripe Checkout + webhook for Next.js App Router (one-time + subscriptions, signature verification). Alternative to `payment-integration` (Polar). Triggers: "stripe", "stripe checkout", "card payment", "stripe webhook", "subscription billing", "thanh toan the", "tich hop stripe", "doi polar sang stripe".
 ---
 
 # stripe-checkout — Next.js Integration

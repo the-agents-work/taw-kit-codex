@@ -1,11 +1,6 @@
 ---
 name: faker-vi-recipes
-description: >
-  Generators for realistic Vietnamese seed data with @faker-js/faker + custom
-  VN-specific data pools. Used by branches/maintain/seed.md. Covers names,
-  addresses, phone numbers, VND amounts, common Vietnamese product categories.
-  Trigger phrases (EN + VN): "faker vi", "seed tieng viet", "data gia vn",
-  "ten viet nam", "dia chi viet nam", "vnd fake".
+description: VN-realistic seed data via @faker-js/faker + custom VN pools (names, addresses, phones, VND, product categories). Triggers: "faker vi", "seed tieng viet", "data gia vn", "ten viet nam", "dia chi viet nam", "vnd fake".
 ---
 
 # faker-vi-recipes — VN-Realistic Seed Data

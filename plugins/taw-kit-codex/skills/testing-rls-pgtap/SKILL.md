@@ -1,11 +1,6 @@
 ---
 name: testing-rls-pgtap
-description: >
-  Write and run pgTAP tests that validate Supabase Row Level Security (RLS)
-  policies. Ensures tenants can only see their own rows, admins see all, etc.
-  Detection-first — reads supabase/migrations/ to auto-infer tables and policies.
-  Trigger phrases (EN + VN): "rls test", "pgtap", "supabase rls",
-  "test policy", "kiem tra rls", "test bao mat database".
+description: pgTAP tests for Supabase RLS policies (tenant isolation, admin access). Auto-reads supabase/migrations/ for tables. Triggers: "rls test", "pgtap", "supabase rls", "test policy", "kiem tra rls", "test bao mat database".
 ---
 
 # testing-rls-pgtap — Supabase RLS Policy Tests

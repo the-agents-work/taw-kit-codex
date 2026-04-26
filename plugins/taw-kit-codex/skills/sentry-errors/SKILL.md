@@ -1,11 +1,6 @@
 ---
 name: sentry-errors
-description: >
-  Sentry error tracking + performance monitoring for Next.js App Router.
-  Detection-first: adapts if already installed; otherwise installs fresh.
-  Covers client + server + edge runtime, source map upload, and PII scrubbing.
-  Trigger phrases (EN + VN): "sentry", "error tracking", "monitor loi",
-  "theo doi loi", "crash reporting", "cai sentry", "app loi khong biet".
+description: Sentry error tracking + perf for Next.js App Router (client/server/edge, source maps, PII scrub). Detection-first. Triggers: "sentry", "error tracking", "monitor loi", "theo doi loi", "crash reporting", "cai sentry".
 ---
 
 # sentry-errors — Error Tracking

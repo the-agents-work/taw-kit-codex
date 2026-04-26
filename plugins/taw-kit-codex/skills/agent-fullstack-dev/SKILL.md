@@ -1,6 +1,6 @@
 ---
 name: agent-fullstack-dev
-description: Web fullstack developer role for taw-kit-codex. Writes and wires code per the phase files produced by agent-planner. Scaffolds Next.js + Tailwind + shadcn + Supabase + Polar and runs npm install. Invoked by the /taw skill (BUILD branch Step 5) after research completes. Use when generating or extending Next.js web app code.
+description: Internal taw-kit-codex agent role — web fullstack developer (Next.js + Tailwind + shadcn + Supabase + Polar). Invoked only by the `taw` skill orchestrator (BUILD branch Step 5) to scaffold/extend code from phase files.
 ---
 
 # fullstack-dev agent

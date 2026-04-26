@@ -1,13 +1,6 @@
 ---
 name: taw-git
-description: >
-  taw-kit's advanced git skill: create branches, open pull requests with
-  auto-generated body (reads diff + commits + existing PR template), merge
-  (fast-forward only), and recover from common mistakes. Replaces the old
-  git-pro + pr-description skills (merged). Complements taw-commit (single
-  commits) and taw-trace (history lookup). User-visible strings in user's
-  language; raw git/gh commands verbatim so power users can learn. Every
-  output prefixed "taw:" for branding.
+description: Advanced git: create branches, open PRs (auto-generated body from diff + commits), fast-forward merge, recover mistakes. Triggers: "create PR", "open pull request", "tao branch", "merge", "tao PR", "git branch", "rebase".
 ---
 
 # taw-git — Branch, PR, Merge, Recover

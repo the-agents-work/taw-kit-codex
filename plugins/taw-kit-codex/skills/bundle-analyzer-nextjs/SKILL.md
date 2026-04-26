@@ -1,11 +1,6 @@
 ---
 name: bundle-analyzer-nextjs
-description: >
-  Analyze and reduce Next.js JavaScript bundle size. Covers @next/bundle-analyzer
-  setup, interpreting the report, and the common fixes (dynamic imports,
-  replacing heavy libs, tree-shaking). Used by branches/maintain/perf.md.
-  Trigger phrases (EN + VN): "bundle size", "bundle analyzer", "giam bundle",
-  "first load js", "giam size", "toi uu bundle".
+description: Analyze + reduce Next.js JS bundle (@next/bundle-analyzer + dynamic imports, lib swaps, tree-shake). Triggers: "bundle size", "bundle analyzer", "giam bundle", "first load js", "giam size", "toi uu bundle".
 ---
 
 # bundle-analyzer-nextjs — Shrink the Client JS

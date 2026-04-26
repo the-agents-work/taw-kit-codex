@@ -1,14 +1,7 @@
 ---
 name: expo-dev-client
-description: >
-  Build and distribute Expo development clients (custom Expo Go) locally or
-  via TestFlight when a taw-kit mobile project requires native modules
-  (camera, BLE, etc.) beyond stock Expo Go. User-visible strings match the
-  user's input language (Vietnamese by default for VN users). Trigger phrases
-  (EN + VN): "expo dev client", "custom expo go", "tao dev client", "test
-  native module".
-version: 1.0.0
-license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo, vendored into taw-kit)
+description: Build + distribute Expo dev clients (custom Expo Go) for projects needing native modules beyond stock Expo Go. Triggers: "expo dev client", "custom expo go", "tao dev client", "test native module".
+license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo)
 ---
 
 **Language rule (taw-kit override):** Status / progress messages default to Vietnamese for VN-built taw-kit projects. Code, file paths, EAS commands stay English.

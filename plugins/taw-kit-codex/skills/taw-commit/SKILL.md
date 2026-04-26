@@ -1,13 +1,6 @@
 ---
 name: taw-commit
-description: >
-  taw-kit's unified commit skill: stages files, scans for secrets/env/build-artefact
-  leaks, generates a conventional commit message by READING the actual diff (not
-  guessing), then commits. Two modes: CONTEXT mode (called by taw orchestrator —
-  uses .taw/checkpoint.json phase info, writes strict [P<n>] format) and SMART
-  mode (ad-hoc — infers type+scope+subject from diff content). Replaces the old
-  git-auto-commit + commit-message-smart skills (merged). User never types git
-  commands. Always prefixes output with "taw:" so you know which tool did it.
+description: Stage + scan secrets + generate conventional commit message from actual diff + commit. CONTEXT mode (called by taw orchestrator, uses .taw/checkpoint.json phase) or SMART mode (ad-hoc). Triggers: "commit", "git commit", "save my work", "luu lai", "commit dum".
 ---
 
 # taw-commit — Conventional Commits, taw-Branded

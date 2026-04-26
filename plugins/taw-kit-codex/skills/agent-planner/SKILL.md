@@ -1,6 +1,6 @@
 ---
 name: agent-planner
-description: Architect role for taw-kit-codex. Decomposes a taw-kit intent (VN prose + clarifications in .taw/intent.json) into plan.md + numbered phase files. Invoked by the /taw skill (BUILD branch Step 5) before any code is written. Use when breaking down a fresh feature request into ordered implementation phases.
+description: Internal taw-kit-codex agent role — architect/planner. Invoked only by the `taw` skill orchestrator (BUILD branch Step 5) to decompose intent.json into plan.md + numbered phase files.
 ---
 
 # planner agent
