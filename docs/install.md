@@ -25,13 +25,22 @@ git clone https://github.com/the-agents-work/taw-kit-codex.git ~/.taw-kit-codex
 bash ~/.taw-kit-codex/scripts/install.sh
 ```
 
-Installer sẽ:
-1. Backup plugin cũ (nếu có) sang `~/.codex/plugins/taw-kit-codex.bak.<timestamp>`.
-2. Copy nguồn vào `~/.codex/plugins/taw-kit-codex/`.
-3. Đăng ký entry vào `~/.agents/plugins/marketplace.json`.
-4. Set executable cho `hooks/*.sh` và `scripts/*.sh`.
+Installer sẽ (mặc định **chế độ user — copy**):
+1. **Copy** từng thư mục skill vào `~/.codex/skills/<name>/` (cross-platform an toàn, kể cả Windows native).
+2. Backup skill cũ trùng tên (nếu có) sang `<name>.bak.<timestamp>`.
+3. Đăng ký marketplace qua `codex plugin marketplace add`.
 
-Để bỏ qua prompt xác nhận:
+**Chế độ dev — symlink** (cho contributor muốn sửa repo và test ngay, không cần cài lại):
+
+```bash
+TAW_SYMLINK=1 bash ~/.taw-kit-codex/scripts/install.sh
+# hoặc
+bash ~/.taw-kit-codex/scripts/install.sh --symlink
+```
+
+Symlink chỉ chạy được trên macOS / Linux / WSL. Trên **Windows native** dùng copy (mặc định).
+
+Để bỏ qua prompt xác nhận (CI / scripted):
 
 ```bash
 TAW_YES=1 bash ~/.taw-kit-codex/scripts/install.sh
@@ -55,10 +64,18 @@ Codex kích hoạt skill `taw`, vào nhánh BUILD. Codex KHÔNG hỗ trợ custo
 
 ## 5. Nâng cấp
 
+**Chế độ user (copy)** — cài lại sau mỗi lần `git pull`:
 ```bash
 cd ~/.taw-kit-codex
 git pull
 bash scripts/install.sh
+```
+
+**Chế độ dev (symlink)** — chỉ cần `git pull`, Codex đọc live:
+```bash
+cd ~/.taw-kit-codex
+git pull
+# done — không cần cài lại trừ khi có skill mới được thêm
 ```
 
 ## 6. Gỡ

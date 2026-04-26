@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # taw-kit-codex installer
-# Symlinks all plugin skills into ~/.codex/skills/ so Codex CLI auto-discovers them.
-# Also registers the repo as a Codex marketplace via `codex plugin marketplace add` for
-# future use of the `/plugins` UI flow.
+# Default: COPY skills into ~/.codex/skills/ (cross-platform, no symlink permissions issues).
+# Dev mode: TAW_SYMLINK=1 (or --symlink flag) symlinks instead — for plugin contributors who
+# want live edits without re-running the installer after every change.
+# Also registers the repo as a Codex marketplace via `codex plugin marketplace add`.
 
 set -euo pipefail
 
@@ -12,6 +13,12 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 PLUGIN_DIR="$REPO_ROOT/plugins/$PLUGIN_NAME"
 CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
 SKILLS_DIR="$CODEX_HOME/skills"
+
+# Mode: copy (default) vs symlink (dev)
+MODE="copy"
+if [ "${TAW_SYMLINK:-0}" = "1" ] || [ "${1:-}" = "--symlink" ]; then
+  MODE="symlink"
+fi
 
 say() { printf "\033[1;36m▸\033[0m %s\n" "$1"; }
 warn() { printf "\033[1;33m⚠\033[0m %s\n" "$1"; }
@@ -27,7 +34,11 @@ fi
 CODEX_VER="$(codex --version 2>/dev/null | head -1 || echo unknown)"
 say "Phát hiện: $CODEX_VER"
 say "Plugin nguồn: $PLUGIN_DIR"
-say "Symlink skills vào: $SKILLS_DIR"
+if [ "$MODE" = "symlink" ]; then
+  say "Symlink skills vào: $SKILLS_DIR (chế độ dev — sửa repo là Codex thấy ngay)"
+else
+  say "Copy skills vào: $SKILLS_DIR (chế độ user — cross-platform)"
+fi
 
 # ---- 2. Confirm ----
 if [ "${TAW_YES:-}" != "1" ]; then
@@ -41,9 +52,8 @@ fi
 
 mkdir -p "$SKILLS_DIR"
 
-# ---- 3. Symlink each skill into ~/.codex/skills/ ----
+# ---- 3. Install each skill ----
 INSTALLED=0
-SKIPPED=0
 BACKED_UP=0
 for skill_path in "$PLUGIN_DIR"/skills/*/; do
   [ -d "$skill_path" ] || continue
@@ -51,7 +61,7 @@ for skill_path in "$PLUGIN_DIR"/skills/*/; do
   target="$SKILLS_DIR/$skill_name"
 
   if [ -L "$target" ]; then
-    # Existing symlink — overwrite (assume it's our previous install)
+    # Existing symlink (likely from prior install) — overwrite
     rm -f "$target"
   elif [ -e "$target" ]; then
     # Real dir/file — back up to avoid clobbering user customizations
@@ -60,10 +70,19 @@ for skill_path in "$PLUGIN_DIR"/skills/*/; do
     BACKED_UP=$((BACKED_UP + 1))
     warn "Backup user skill: $skill_name → $(basename "$backup")"
   fi
-  ln -s "$skill_path" "$target"
+
+  if [ "$MODE" = "symlink" ]; then
+    ln -s "$skill_path" "$target"
+  else
+    cp -R "$skill_path" "$target"
+  fi
   INSTALLED=$((INSTALLED + 1))
 done
-say "Symlinked $INSTALLED skill" "${BACKED_UP:+(backed up $BACKED_UP existing)}"
+if [ "$MODE" = "symlink" ]; then
+  say "Symlinked $INSTALLED skill${BACKED_UP:+ (backed up $BACKED_UP existing)}"
+else
+  say "Copied $INSTALLED skill${BACKED_UP:+ (backed up $BACKED_UP existing)}"
+fi
 
 # ---- 4. Register marketplace (best-effort, non-fatal) ----
 if codex plugin marketplace add "$REPO_ROOT" >/dev/null 2>&1; then
@@ -79,6 +98,12 @@ if [ -f "$PLUGIN_DIR/hooks.json" ]; then
 fi
 
 # ---- 6. Done ----
+if [ "$MODE" = "symlink" ]; then
+  UPDATE_HINT="cd $REPO_ROOT && git pull   # sửa repo là Codex thấy ngay, không cần cài lại"
+else
+  UPDATE_HINT="cd $REPO_ROOT && git pull && bash scripts/install.sh   # update bằng git pull + cài lại"
+fi
+
 cat <<EOF
 
 \033[1;32m✓ Cài xong.\033[0m
@@ -92,9 +117,8 @@ Thử ngay:
 Codex sẽ tự kích hoạt skill 'taw' và chạy luồng BUILD.
 
 Lệnh hữu ích:
-  ls $SKILLS_DIR | head                           # xem skill đã cài
-  ls -la $SKILLS_DIR/taw                          # xác nhận symlink trỏ về repo
-  bash $SCRIPT_DIR/install.sh                     # cài lại / nâng cấp
-  cd $REPO_ROOT && git pull && bash scripts/install.sh  # update từ GitHub
+  ls $SKILLS_DIR | head                # xem skill đã cài
+  $UPDATE_HINT
+  TAW_SYMLINK=1 bash $SCRIPT_DIR/install.sh   # chuyển sang chế độ dev (live edits)
 
 EOF
