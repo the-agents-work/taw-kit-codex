@@ -1,6 +1,6 @@
 ---
 name: dep-upgrade-safe
-description: Safe dep upgrade refs (Next.js/React/Supabase/Tailwind/TS/shadcn) + codemods + safety protocol. Triggers: "breaking change", "codemod", "upgrade next", "upgrade react", "nang cap", "cap nhat deps", "migration guide".
+description: 'Safe dep upgrade refs (Next.js/React/Supabase/Tailwind/TS/shadcn) + codemods + safety protocol. Triggers: "breaking change", "codemod", "upgrade next", "upgrade react", "nang cap", "cap nhat deps", "migration guide".'
 ---
 
 # dep-upgrade-safe — Breaking Change Cheatsheet

@@ -1,6 +1,6 @@
 ---
 name: sentry-errors
-description: Sentry error tracking + perf for Next.js App Router (client/server/edge, source maps, PII scrub). Detection-first. Triggers: "sentry", "error tracking", "monitor loi", "theo doi loi", "crash reporting", "cai sentry".
+description: 'Sentry error tracking + perf for Next.js App Router (client/server/edge, source maps, PII scrub). Detection-first. Triggers: "sentry", "error tracking", "monitor loi", "theo doi loi", "crash reporting", "cai sentry".'
 ---
 
 # sentry-errors — Error Tracking

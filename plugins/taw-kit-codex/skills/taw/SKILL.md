@@ -1,6 +1,6 @@
 ---
 name: taw
-description: Vietnamese-friendly entrypoint for taw-kit-codex. Trigger WHENEVER user describes a software task in VN or EN — build, add, fix, deploy, test, upgrade, clean, perf, rollback, refactor, types, seed, review, security, status, memory. Sample triggers: "lam cho toi shop ca phe", "them trang lien he", "fix loi", "deploy len vercel", "test login", "nang cap next", "don code", "lui lai", "kiem tra bao mat". Classifies intent → loads one branch file from `branches/`. SAFE clarifies+approves; YOLO ("lam luon"/"nhanh nha"/"auto"/"yolo") skips gates. Reply in user's language.
+description: 'Vietnamese-friendly entrypoint for taw-kit-codex. Trigger WHENEVER user describes a software task in VN or EN — build, add, fix, deploy, test, upgrade, clean, perf, rollback, refactor, types, seed, review, security, status, memory. Sample triggers: "lam cho toi shop ca phe", "them trang lien he", "fix loi", "deploy len vercel", "test login", "nang cap next", "don code", "lui lai", "kiem tra bao mat". Classifies intent → loads one branch file from `branches/`. SAFE clarifies+approves; YOLO ("lam luon"/"nhanh nha"/"auto"/"yolo") skips gates. Reply in user''s language.'
 ---
 
 # taw — Single Entrypoint

@@ -1,6 +1,6 @@
 ---
 name: expo-dev-client
-description: Build + distribute Expo dev clients (custom Expo Go) for projects needing native modules beyond stock Expo Go. Triggers: "expo dev client", "custom expo go", "tao dev client", "test native module".
+description: 'Build + distribute Expo dev clients (custom Expo Go) for projects needing native modules beyond stock Expo Go. Triggers: "expo dev client", "custom expo go", "tao dev client", "test native module".'
 license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo)
 ---
 

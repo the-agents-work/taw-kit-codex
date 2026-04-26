@@ -1,6 +1,6 @@
 ---
 name: testing-rls-pgtap
-description: pgTAP tests for Supabase RLS policies (tenant isolation, admin access). Auto-reads supabase/migrations/ for tables. Triggers: "rls test", "pgtap", "supabase rls", "test policy", "kiem tra rls", "test bao mat database".
+description: 'pgTAP tests for Supabase RLS policies (tenant isolation, admin access). Auto-reads supabase/migrations/ for tables. Triggers: "rls test", "pgtap", "supabase rls", "test policy", "kiem tra rls", "test bao mat database".'
 ---
 
 # testing-rls-pgtap — Supabase RLS Policy Tests

@@ -1,6 +1,6 @@
 ---
 name: testing-playwright
-description: Playwright E2E tests for Next.js. Detection-first (adapts to existing Playwright/Cypress). Triggers: "playwright", "e2e test", "end to end", "test luong", "browser test", "test user flow", "cypress".
+description: 'Playwright E2E tests for Next.js. Detection-first (adapts to existing Playwright/Cypress). Triggers: "playwright", "e2e test", "end to end", "test luong", "browser test", "test user flow", "cypress".'
 ---
 
 # testing-playwright — E2E Patterns

@@ -1,6 +1,6 @@
 ---
 name: taw-trace
-description: Look up git history without knowing git — find which commit added a feature, changed a file, or ran in which taw phase. Triggers: "xem lich su", "ai sua cai nay", "khi nao them", "commit nao lam hong", "show git history", "blame".
+description: 'Look up git history without knowing git — find which commit added a feature, changed a file, or ran in which taw phase. Triggers: "xem lich su", "ai sua cai nay", "khi nao them", "commit nao lam hong", "show git history", "blame".'
 ---
 
 # taw-trace — Commit History Lookup (taw-Branded)

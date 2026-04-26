@@ -1,6 +1,6 @@
 ---
 name: taw-commit
-description: Stage + scan secrets + generate conventional commit message from actual diff + commit. CONTEXT mode (called by taw orchestrator, uses .taw/checkpoint.json phase) or SMART mode (ad-hoc). Triggers: "commit", "git commit", "save my work", "luu lai", "commit dum".
+description: 'Stage + scan secrets + generate conventional commit message from actual diff + commit. CONTEXT mode (called by taw orchestrator, uses .taw/checkpoint.json phase) or SMART mode (ad-hoc). Triggers: "commit", "git commit", "save my work", "luu lai", "commit dum".'
 ---
 
 # taw-commit — Conventional Commits, taw-Branded

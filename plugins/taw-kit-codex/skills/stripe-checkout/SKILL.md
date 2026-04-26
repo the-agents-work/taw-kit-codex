@@ -1,6 +1,6 @@
 ---
 name: stripe-checkout
-description: Stripe Checkout + webhook for Next.js App Router (one-time + subscriptions, signature verification). Alternative to `payment-integration` (Polar). Triggers: "stripe", "stripe checkout", "card payment", "stripe webhook", "subscription billing", "thanh toan the", "tich hop stripe", "doi polar sang stripe".
+description: 'Stripe Checkout + webhook for Next.js App Router (one-time + subscriptions, signature verification). Alternative to `payment-integration` (Polar). Triggers: "stripe", "stripe checkout", "card payment", "stripe webhook", "subscription billing", "thanh toan the", "tich hop stripe", "doi polar sang stripe".'
 ---
 
 # stripe-checkout — Next.js Integration

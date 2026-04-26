@@ -1,6 +1,6 @@
 ---
 name: debug-flight-recorder
-description: Add contextual logs along a bug's call path, run the repro, collect logs, then auto-remove (marker-comment cleanup). Triggers: "debug with logs", "add console logs", "flight recorder", "bug khong tai hien", "khong biet loi o dau", "trace bug".
+description: 'Add contextual logs along a bug''s call path, run the repro, collect logs, then auto-remove (marker-comment cleanup). Triggers: "debug with logs", "add console logs", "flight recorder", "bug khong tai hien", "khong biet loi o dau", "trace bug".'
 ---
 
 # debug-flight-recorder — Instrument, Repro, Collect, Revert

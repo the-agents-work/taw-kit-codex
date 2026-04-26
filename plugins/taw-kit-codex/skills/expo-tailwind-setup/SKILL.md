@@ -1,6 +1,6 @@
 ---
 name: expo-tailwind-setup
-description: Set up Tailwind v4 + NativeWind v5 in Expo for universal styling (iOS/Android/Web). Triggers: "expo tailwind", "nativewind setup", "style react native", "tao app mobile voi tailwind", "cai dat nativewind".
+description: 'Set up Tailwind v4 + NativeWind v5 in Expo for universal styling (iOS/Android/Web). Triggers: "expo tailwind", "nativewind setup", "style react native", "tao app mobile voi tailwind", "cai dat nativewind".'
 version: 1.0.0
 license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo, vendored into taw-kit)
 ---

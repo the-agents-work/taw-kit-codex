@@ -1,6 +1,6 @@
 ---
 name: taw-rn-supabase
-description: Wire Supabase JS into Expo React Native (AsyncStorage session, magic-link via expo-linking, Realtime, shared TS types with web twin). Mobile counterpart of `auth-magic-link`. Triggers: "supabase react native", "supabase mobile", "auth mobile expo", "magic link mobile", "supabase deep link", "tich hop supabase vao app".
+description: 'Wire Supabase JS into Expo React Native (AsyncStorage session, magic-link via expo-linking, Realtime, shared TS types with web twin). Mobile counterpart of `auth-magic-link`. Triggers: "supabase react native", "supabase mobile", "auth mobile expo", "magic link mobile", "supabase deep link", "tich hop supabase vao app".'
 ---
 
 # taw-rn-supabase

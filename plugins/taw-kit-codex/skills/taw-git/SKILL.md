@@ -1,6 +1,6 @@
 ---
 name: taw-git
-description: Advanced git: create branches, open PRs (auto-generated body from diff + commits), fast-forward merge, recover mistakes. Triggers: "create PR", "open pull request", "tao branch", "merge", "tao PR", "git branch", "rebase".
+description: 'Advanced git: create branches, open PRs (auto-generated body from diff + commits), fast-forward merge, recover mistakes. Triggers: "create PR", "open pull request", "tao branch", "merge", "tao PR", "git branch", "rebase".'
 ---
 
 # taw-git — Branch, PR, Merge, Recover

@@ -1,6 +1,6 @@
 ---
 name: knip-cleanup
-description: Detect unused files/exports/deps/imports in Next.js/TS via knip. Report first, delete only on approval. Triggers: "knip", "dead code", "unused exports", "unused deps", "don code", "xoa file thua".
+description: 'Detect unused files/exports/deps/imports in Next.js/TS via knip. Report first, delete only on approval. Triggers: "knip", "dead code", "unused exports", "unused deps", "don code", "xoa file thua".'
 ---
 
 # knip-cleanup — Dead Code Detection

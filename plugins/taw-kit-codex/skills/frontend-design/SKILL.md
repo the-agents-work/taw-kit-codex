@@ -1,6 +1,6 @@
 ---
 name: frontend-design
-description: Distinctive, production-grade frontend UIs that avoid generic AI aesthetics. Triggers: "build web component", "landing page", "dashboard UI", "react component", "lam giao dien", "thiet ke", "cho dep", "anti AI slop".
+description: 'Distinctive, production-grade frontend UIs that avoid generic AI aesthetics. Triggers: "build web component", "landing page", "dashboard UI", "react component", "lam giao dien", "thiet ke", "cho dep", "anti AI slop".'
 license: Complete terms in LICENSE.txt
 ---
 

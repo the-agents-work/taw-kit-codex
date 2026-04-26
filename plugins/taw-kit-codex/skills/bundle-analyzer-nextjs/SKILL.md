@@ -1,6 +1,6 @@
 ---
 name: bundle-analyzer-nextjs
-description: Analyze + reduce Next.js JS bundle (@next/bundle-analyzer + dynamic imports, lib swaps, tree-shake). Triggers: "bundle size", "bundle analyzer", "giam bundle", "first load js", "giam size", "toi uu bundle".
+description: 'Analyze + reduce Next.js JS bundle (@next/bundle-analyzer + dynamic imports, lib swaps, tree-shake). Triggers: "bundle size", "bundle analyzer", "giam bundle", "first load js", "giam size", "toi uu bundle".'
 ---
 
 # bundle-analyzer-nextjs — Shrink the Client JS

@@ -1,6 +1,6 @@
 ---
 name: expo-deployment
-description: Deploy Expo apps to iOS/Android/Web via EAS Build + Submit. Mobile equivalent of taw SHIP branch (which targets Vercel/Docker/VPS). Triggers: "deploy expo app", "publish to app store", "eas build", "day app len store", "deploy app mobile", "len app store".
+description: 'Deploy Expo apps to iOS/Android/Web via EAS Build + Submit. Mobile equivalent of taw SHIP branch (which targets Vercel/Docker/VPS). Triggers: "deploy expo app", "publish to app store", "eas build", "day app len store", "deploy app mobile", "len app store".'
 version: 1.0.0
 license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo, vendored into taw-kit)
 ---

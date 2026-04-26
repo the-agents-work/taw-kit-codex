@@ -1,6 +1,6 @@
 ---
 name: building-native-ui
-description: Build native UIs with Expo Router (file-based routing for mobile). Mobile counterpart of `nextjs-app-router`. Triggers: "expo router", "react native ui", "build mobile screen", "tao man hinh app", "navigation mobile".
+description: 'Build native UIs with Expo Router (file-based routing for mobile). Mobile counterpart of `nextjs-app-router`. Triggers: "expo router", "react native ui", "build mobile screen", "tao man hinh app", "navigation mobile".'
 version: 1.0.1
 license: MIT (see LICENSE.txt — © 2025 650 Industries / Expo, vendored into taw-kit)
 ---

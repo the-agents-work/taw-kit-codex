@@ -1,6 +1,6 @@
 ---
 name: ast-grep-patterns
-description: ast-grep (sg) cookbook for safe structural refactors in TS/TSX (rename, extract, find-replace with context). Triggers: "ast-grep", "structural replace", "rename symbol", "codemod tsx", "tim cau truc", "thay the theo pattern".
+description: 'ast-grep (sg) cookbook for safe structural refactors in TS/TSX (rename, extract, find-replace with context). Triggers: "ast-grep", "structural replace", "rename symbol", "codemod tsx", "tim cau truc", "thay the theo pattern".'
 ---
 
 # ast-grep-patterns — Structural Refactor Recipes
