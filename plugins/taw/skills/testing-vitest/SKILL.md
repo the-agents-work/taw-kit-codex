@@ -1,6 +1,6 @@
 ---
 name: testing-vitest
-description: 'Set up + write Vitest unit/component tests for Next.js/React. Detection-first. Triggers: "vitest setup", "unit test", "gen test", "viet test", "test component", "jsdom test", "@testing-library".'
+description: 'Set up + write Vitest unit/component tests for JavaScript/TypeScript apps, React components, utilities, and API helpers. Detection-first; respects existing Jest/Vitest setup. Triggers: "vitest setup", "unit test", "gen test", "viet test", "test component", "jsdom test", "@testing-library".'
 ---
 
 # testing-vitest — Vitest Setup + Patterns

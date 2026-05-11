@@ -1,9 +1,9 @@
 ---
 name: tiktok-shop-embed
 description: >
-  Embed TikTok Shop product cards and affiliate links into taw-kit Next.js pages.
-  Supports product widget, video embed, and shop affiliate link generation.
-  For Vietnamese sellers who also sell on TikTok Shop.
+  Embed TikTok Shop product cards, affiliate links, shop widgets, and video
+  embeds into web pages. Triggers: "TikTok Shop", "affiliate", "san pham
+  TikTok", "nhung TikTok Shop", "link affiliate", "video san pham". Web-only.
 ---
 
 # tiktok-shop-embed — TikTok Shop Integration

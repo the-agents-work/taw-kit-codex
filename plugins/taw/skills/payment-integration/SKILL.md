@@ -1,9 +1,11 @@
 ---
 name: payment-integration
 description: >
-  Integrate Polar checkout for digital products and subscriptions, plus Vietnamese
-  payment fallbacks (SePay/MoMo QR). Activated by taw when payment is part of
-  the product description.
+  Integrate payments for Vietnamese-friendly web products: Polar checkout,
+  subscriptions, SePay/MoMo/VietQR fallback, COD notes, and webhook basics.
+  Triggers: "payment", "checkout", "thanh toan", "Polar", "VietQR", "MoMo",
+  "SePay", "subscription", "ban hang co thanh toan". Use stripe-checkout when
+  user explicitly asks Stripe or project already uses Stripe.
 ---
 
 # payment-integration — Payments for Vietnamese Market

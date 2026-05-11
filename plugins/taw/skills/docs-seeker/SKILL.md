@@ -1,10 +1,10 @@
 ---
 name: docs-seeker
 description: >
-  Fetch up-to-date documentation for a framework, library, or API that taw-kit
-  uses. Invoke when the orchestrator hits an unfamiliar feature (new Next.js
-  version, Supabase RLS syntax, Polar webhook shape). Vietnamese trigger phrases:
-  "tra tài liệu", "xem docs mới nhất", "tìm hướng dẫn <tên lib>".
+  Fetch up-to-date official documentation for any framework, library, API, CLI,
+  or SDK before coding against it. Triggers: "tra tài liệu", "xem docs mới
+  nhất", "tìm hướng dẫn <lib>", "latest docs", "official docs", "API docs",
+  "migration guide".
 ---
 
 # docs-seeker

@@ -1,9 +1,10 @@
 ---
 name: seo-basic
 description: >
-  Add essential SEO to taw-kit projects: meta tags, Open Graph, sitemap.xml,
-  robots.txt, and structured data. Optimised for Vietnamese content and Google
-  search in Vietnam market.
+  Add essential SEO for web projects: metadata, Open Graph, sitemap.xml,
+  robots.txt, canonical URLs, and structured data. Triggers: "SEO", "meta
+  tags", "open graph", "sitemap", "robots.txt", "google search", "toi uu seo",
+  "chia se Facebook/Zalo".
 ---
 
 # seo-basic — SEO Essentials

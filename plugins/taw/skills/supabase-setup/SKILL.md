@@ -1,10 +1,10 @@
 ---
 name: supabase-setup
 description: >
-  Spin up Supabase project schema, run migrations, and configure Row Level
-  Security (RLS) for taw-kit projects. Activated when a new database table
-  or auth flow is needed. Non-dev safe — generates SQL, does not require
-  user to understand SQL syntax.
+  Create or update Supabase schema, migrations, tables, storage, auth-related
+  database setup, and Row Level Security policies. Triggers: "supabase",
+  "database", "migration", "RLS", "policy", "tao bang", "them cot",
+  "schema", "db setup". Non-dev safe: generates SQL and explains actions.
 ---
 
 # supabase-setup — Database Bootstrap

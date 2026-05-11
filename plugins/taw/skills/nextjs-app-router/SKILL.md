@@ -1,9 +1,10 @@
 ---
 name: nextjs-app-router
 description: >
-  Next.js 14 App Router conventions for taw-kit projects. Covers file-based
-  routing, layouts, Server Components, Client Components, API route handlers,
-  and middleware. Reference for fullstack-dev agent during code generation.
+  Next.js App Router conventions for web apps: file-based routing, layouts,
+  Server Components, Client Components, API route handlers, middleware, loading,
+  error, and metadata files. Triggers: "Next.js", "App Router", "app router",
+  "server component", "route handler", "middleware", "next layout".
 ---
 
 # nextjs-app-router — Routing & Conventions

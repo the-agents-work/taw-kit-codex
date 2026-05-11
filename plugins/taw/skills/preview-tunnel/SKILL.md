@@ -1,9 +1,10 @@
 ---
 name: preview-tunnel
 description: >
-  Run Next.js dev server and expose it via localtunnel for live preview sharing.
-  Returns a public URL the user can send to clients or view on mobile.
-  Activated after scaffold to let user see their site before deploy.
+  Run a local web dev server and expose it via localtunnel for shareable preview
+  before deploy. Triggers: "preview URL", "share local", "localtunnel",
+  "cho khach xem thu", "xem tren dien thoai", "public preview". Defaults to
+  Next.js dev server but can adapt to other local web ports.
 ---
 
 # preview-tunnel — Live Preview via Tunnel

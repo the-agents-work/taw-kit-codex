@@ -1,9 +1,10 @@
 ---
 name: form-builder
 description: >
-  Build contact, lead capture, and booking forms that save submissions to Supabase.
-  Uses react-hook-form + zod validation. Vietnamese field labels and error messages.
-  Activated by taw and taw-add for any form feature request.
+  Build contact, lead capture, order, booking, survey, or signup forms with
+  validation and storage. Triggers: "contact form", "lead form", "booking
+  form", "order form", "them form", "form dat hang", "form lien he". Detects
+  project stack; Supabase + react-hook-form + zod is the default web pattern.
 ---
 
 # form-builder — Forms to Supabase

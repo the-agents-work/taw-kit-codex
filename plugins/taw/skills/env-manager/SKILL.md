@@ -1,9 +1,10 @@
 ---
 name: env-manager
 description: >
-  Generate and validate .env.local and .env.example files for taw-kit projects.
-  Ensures all required secrets are present before build or deploy. Never logs
-  secret values. Activated at project init and before taw-deploy.
+  Generate and validate environment files for apps/scripts: .env.local,
+  .env.example, required keys, deploy env checklist, and secret-safe validation.
+  Triggers: "env", ".env", "thieu bien moi truong", "validate env", "env
+  example", "cau hinh key". Never logs secret values.
 ---
 
 # env-manager — Environment Variable Management

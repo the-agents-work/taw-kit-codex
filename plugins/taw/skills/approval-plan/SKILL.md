@@ -1,9 +1,9 @@
 ---
 name: approval-plan
 description: >
-  Render a 3-5 bullet plan to the user in Vietnamese and wait for confirmation
-  before proceeding. Accepts "OK", "co", "duoc", "chay di" as approval signals.
-  Used by taw, taw-add, and taw-fix before any code changes are made.
+  Internal taw-kit-codex skill — render a 3-5 bullet approval plan in Vietnamese
+  and wait for confirmation before code changes. Used only by the taw
+  orchestrator/branches; never triggered directly by user prose.
 ---
 
 # approval-plan — Plan Confirmation Gate

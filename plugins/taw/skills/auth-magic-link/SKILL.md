@@ -1,9 +1,10 @@
 ---
 name: auth-magic-link
 description: >
-  Implement Supabase magic-link email authentication for taw-kit projects.
-  No password required — user enters email, receives a login link. Includes
-  middleware-based route protection and session management.
+  Implement Supabase magic-link email authentication when user asks for login,
+  passwordless auth, email link sign-in, protected routes, or "dang nhap bang
+  email". Next.js/Supabase-specific; if project uses Clerk/NextAuth, adapt or
+  route through taw stack detection instead of forcing Supabase.
 ---
 
 # auth-magic-link — Passwordless Auth

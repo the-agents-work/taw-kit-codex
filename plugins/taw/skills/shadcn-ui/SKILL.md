@@ -1,9 +1,10 @@
 ---
 name: shadcn-ui
 description: >
-  Install and use shadcn/ui components in taw-kit projects. Covers Button, Card,
-  Form, Table, Dialog, Toast, and navigation patterns. Activated when building
-  UI components in Next.js App Router with Tailwind.
+  Install and use shadcn/ui components for Tailwind web apps. Covers Button,
+  Card, Form, Table, Dialog, Toast, navigation, component patterns, and theming.
+  Triggers: "shadcn", "ui component", "button/card/dialog/table", "cai shadcn",
+  "them component", "tailwind component". Web-only.
 ---
 
 # shadcn-ui — Component Scaffold

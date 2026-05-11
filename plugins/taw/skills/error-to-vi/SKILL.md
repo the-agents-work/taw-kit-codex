@@ -1,9 +1,10 @@
 ---
 name: error-to-vi
 description: >
-  Translate common Next.js, TypeScript, Supabase, and npm build errors into
-  plain Vietnamese with actionable fix hints. Used by taw-fix and taw-deploy
-  so non-dev users never see raw English error messages.
+  Translate build/runtime/type/deploy errors into plain Vietnamese with a short
+  fix hint. Covers common Next.js, TypeScript, Supabase, npm, env, and deploy
+  failures. Triggers: "dịch lỗi", "giai thich loi", "error nay la gi",
+  "translate error", "loi build nay sua sao".
 ---
 
 # error-to-vi — Error Translation to Vietnamese

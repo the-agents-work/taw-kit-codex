@@ -1,9 +1,10 @@
 ---
 name: vietnamese-copy
 description: >
-  Generate Vietnamese marketing copy, UI strings, CTAs, error messages, and
-  email templates for taw-kit projects. Tone: friendly, conversational, Southern
-  Vietnamese style. Activated for any user-visible text generation.
+  Generate or polish Vietnamese user-facing copy: landing page text, UI labels,
+  CTAs, empty states, error messages, emails, product descriptions, and app
+  microcopy. Triggers: "viet copy", "copy tieng Viet", "CTA", "noi dung
+  landing", "sua cau chu", "Southern Vietnamese tone".
 ---
 
 # vietnamese-copy — Vietnamese Content Generation

@@ -1,9 +1,10 @@
 ---
 name: debug
 description: >
-  Systematic error analysis for taw-kit projects. Reads stack traces, greps
-  relevant source files, identifies root cause, and proposes a targeted fix.
-  Activated by taw-fix. Uses sequential-thinking for multi-cause errors.
+  Systematic error analysis for build, runtime, type, test, and deploy failures.
+  Reads stack traces, greps relevant source files, identifies root cause, and
+  proposes or applies a targeted fix. Triggers: "debug", "fix error", "stack
+  trace", "loi build", "khong chay", "sua loi", "root cause".
 ---
 
 # debug — Systematic Error Analysis
