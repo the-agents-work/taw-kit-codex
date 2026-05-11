@@ -83,12 +83,13 @@ Codex CLI does not support parallel isolated subagents. Run each agent skill SEQ
    **NOTE (vs Claude Code port):** Original taw-kit ran researchers in parallel via Claude Code's Task tool, saving ~30s. Codex runs them one after the other. Acceptable trade-off; still completes in <2 min.
 
 3. Dev agent — read `target` from `plans/<dir>/plan.md` frontmatter:
-   - `target: web` → `agent-fullstack-dev` (Next.js + Tailwind + shadcn + Supabase + Polar)
-   - `target: mobile` → `agent-mobile-dev` (Expo + Expo Router + NativeWind + Supabase RN + EAS)
+   - `target: web` → `agent-fullstack-dev` (detects existing web stack; defaults to Next.js only for new unspecified web apps)
+   - `target: mobile` → `agent-mobile-dev` (Expo / React Native)
    - `target: hybrid` → `agent-fullstack-dev` first, then `agent-mobile-dev` sequentially
+   - `target: backend|cli|automation|data|docs` → `agent-fullstack-dev` as general implementation agent
 
    Input: research reports + plan + `.taw/design.json`. Output: scaffolded + implemented code, deps installed.
-4. `agent-tester` — runs `npm run build` + `npm run dev` smoke. Reports pass/fail.
+4. `agent-tester` — detects stack and runs the right verifier/smoke command. Reports pass/fail.
 5. `agent-reviewer` — quick security/quality pass + UI check against `frontend-design` "anti-AI-slop" guidelines.
 
 Between steps emit `✓ Done: <3-word summary>` (e.g. `✓ Done: plan ready`).
@@ -188,10 +189,11 @@ Task: Add a feature to an existing project.
 Feature: <feature_request> | Clarifications: <JSON>
 Rules: Only NEW files or APPENDS — NO rewrites of working code.
 Scope: <files/dirs from Step A3 only>
-Stack: <match project — Next.js App Router OR Expo Router>
+Target: <web|mobile|hybrid|backend|cli|automation|data|docs>
+Stack: <match project — Next.js App Router OR Expo Router OR backend/CLI/data/docs stack>
 If new Supabase table: write migration to supabase/migrations/
 If new dep: run `npm install <pkg>`
-End: run `npm run build`. Report pass/fail.
+End: run the stack's real verifier (`npm run build`, `tsc`, `pytest`, CLI dry-run, curl smoke, etc.). Report pass/fail.
 Context: app/, components/, lib/, .taw/intent.json
 ```
 
@@ -241,8 +243,8 @@ Append to `.taw/intent.json` → `features[]`: `{"feature":"...","status":"done"
 
 - User-visible strings: match user's input language (VN default for VN users). Internal reasoning: English.
 - Single approval gate per flow (Step 4 for new / Step A3 for add). Do NOT add more user prompts mid-agent-chain unless blocking.
-- Default stack: Next.js 14 App Router + Tailwind + shadcn/ui + Supabase + Polar. Deploy = Vercel default.
+- Default stack: Next.js 14 App Router + Tailwind + shadcn/ui + Supabase + Polar only for unspecified new web apps. For mobile, backend, CLI, automation, data, docs, or existing projects, detect and use the appropriate stack.
 - If context grows past 150k tokens during agent chain: compact via `.taw/artifacts/` on disk and summarize.
 - State files in `.taw/` (gitignored). NEVER write API keys/tokens/secrets into `.taw/`.
-- Add-feature scope: ONLY `app/`, `components/`, `lib/`, `supabase/migrations/`. Never touch `next.config.js` / `tailwind.config.ts` without explicit approval.
+- Add-feature scope: touch only the directories/files approved in Step A3. For web this is usually `app/`, `components/`, `lib/`, `supabase/migrations/`; for backend/CLI/data/docs it may be `src/`, `bin/`, `scripts/`, `docs/`, config, or tests. Never rewrite unrelated config without explicit approval.
 - If add-feature touches auth: ask "Tính năng này cần đụng auth — anh chắc không?" require `yes`.

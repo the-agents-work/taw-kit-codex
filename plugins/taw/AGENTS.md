@@ -4,7 +4,7 @@ You are running inside a project that has the **taw-kit-codex** plugin installed
 
 ## What this plugin gives you
 
-A bundle of ~40 Vietnamese-friendly skills + 6 agent-role skills + 3 lifecycle hooks. Designed for non-developer users who describe their product idea in Vietnamese (or English) and expect a real, deployable Next.js / Expo app at the end.
+A bundle of 46 Vietnamese-friendly skills + 6 agent-role skills + 3 lifecycle hooks. Designed for users who describe software work in Vietnamese (or English) and expect a real result: web app, mobile app, backend API, CLI, automation script, data/reporting tool, docs, or repo workflow.
 
 ## Single entrypoint: the `taw` skill
 
@@ -13,6 +13,9 @@ Three ways the user invokes `taw`:
 **A) Auto-trigger via prose** (preferred — no special syntax). When the user types prose like:
 
 - `lam cho toi mot landing page ban ca phe` (build a coffee landing page)
+- `viet tool CLI doi ten file hang loat`
+- `lam backend API nhan webhook`
+- `lam app mobile quan ly kho`
 - `them trang lien he` (add a contact page)
 - `fix loi build` (fix the build error)
 - `deploy len vercel`
@@ -30,7 +33,7 @@ Three ways the user invokes `taw`:
 
 Codex CLI does NOT support custom user-defined slash commands (so no `/taw`), and the `@` prefix in the TUI is a file-picker, not a skill mention.
 
-In both cases: the `taw` skill classifies intent (BUILD / FIX / SHIP / MAINTAIN / ADVISOR) and loads exactly one branch file from `skills/taw/branches/` to execute. Do not try to do the work directly — load the branch file first, then follow it step-by-step.
+In both cases: the `taw` skill classifies intent (BUILD / FIX / SHIP / MAINTAIN / ADVISOR), detects target shape (web / mobile / hybrid / backend / CLI / automation / data / docs), and loads exactly one branch file from `skills/taw/branches/` to execute. Do not try to do broad product work directly — load the branch file first, then follow it step-by-step. For narrow user prose that clearly matches a direct skill (`taw-commit`, `taw-git`, `testing-playwright`, `stripe-checkout`, etc.), Codex may invoke that specific skill directly.
 
 ## Language rule (HARD)
 
@@ -64,7 +67,8 @@ A project-local skill of the same name overrides this plugin's version. Use that
 
 ## Don't
 
-- Don't bypass the `taw` orchestrator and start coding directly when user gives free-form prose. Always classify → branch file → execute.
+- Don't bypass the `taw` orchestrator and start coding directly when user gives broad free-form product/repo prose. Always classify → branch file → execute.
+- Don't force Next.js/Vercel/Supabase when the user's task is mobile, backend, CLI, automation, data, docs, or an existing repo with a different stack.
 - Don't reply in English to a Vietnamese user.
 - Don't skip the approval gate in SAFE mode. The user trades 1 message for the right to course-correct before 5 minutes of work.
 - Don't auto-install npm packages without asking unless the BUILD branch is actively scaffolding a new project.

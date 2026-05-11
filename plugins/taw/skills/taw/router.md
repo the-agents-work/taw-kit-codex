@@ -8,7 +8,7 @@ Pick exactly one. Keyword lists below are inclusive, not exhaustive — use judg
 
 | Intent | Load | Signals (VN + EN) |
 |---|---|---|
-| `BUILD` | `@branches/build.md` | tạo, làm, lam, xây, xay, build, create, make, scaffold, "cho tôi một", "tao cho toi", "làm cho tui", new project, landing page, shop, blog, crm, dashboard, preset:, thêm tính năng, them tinh nang, add feature, extend with, "thêm trang", "thêm form" |
+| `BUILD` | `@branches/build.md` | tạo, làm, lam, xây, xay, build, create, make, scaffold, "cho tôi một", "tao cho toi", "làm cho tui", new project, landing page, shop, blog, crm, dashboard, mobile app, expo app, backend api, api server, cli tool, script, automation, bot, cron, data pipeline, docs site, internal tool, preset:, thêm tính năng, them tinh nang, add feature, extend with, "thêm trang", "thêm form" |
 | `FIX` | `@branches/fix.md` | lỗi, loi, hỏng, hong, không chạy, khong chay, bể, be, vỡ, vo, sửa, sua, fix, broken, error, crash, doesn't work, build fail, website lỗi |
 | `SHIP` | `@branches/ship.md` | deploy, đẩy lên, day len, publish, go live, live, vercel, docker, vps, lên mạng, len mang, production, prod |
 | `MAINTAIN` | Tier-2 menu below | test, upgrade, clean, perf, rollback, refactor, types, seed, review, security, audit, swap, migrate, status, dashboard |
@@ -64,6 +64,9 @@ If `$taw` is invoked with empty args, emit (VN default):
 ```
 taw-kit: anh muốn làm gì? Ví dụ:
   $taw làm cho tôi một shop bán cà phê     (tạo dự án mới)
+  $taw viết tool CLI đổi tên file hàng loạt (CLI / automation)
+  $taw làm backend API nhận webhook         (backend)
+  $taw làm app mobile quản lý kho           (mobile)
   $taw thêm trang liên hệ                   (thêm tính năng)
   $taw website lỗi, fix giùm                (auto-fix)
   $taw deploy lên vercel                    (ship)

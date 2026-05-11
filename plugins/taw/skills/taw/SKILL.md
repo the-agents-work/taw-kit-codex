@@ -1,6 +1,6 @@
 ---
 name: taw
-description: 'Vietnamese-friendly entrypoint for taw-kit-codex. Trigger WHENEVER user describes a software task in VN or EN — build, add, fix, deploy, test, upgrade, clean, perf, rollback, refactor, types, seed, review, security, status, memory. Sample triggers: "lam cho toi shop ca phe", "them trang lien he", "fix loi", "deploy len vercel", "test login", "nang cap next", "don code", "lui lai", "kiem tra bao mat". Classifies intent → loads one branch file from `branches/`. SAFE clarifies+approves; YOLO ("lam luon"/"nhanh nha"/"auto"/"yolo") skips gates. Reply in user''s language.'
+description: 'Vietnamese-friendly entrypoint for taw-kit-codex. Trigger WHENEVER user describes a software task in VN or EN — build/add/fix/deploy/test/refactor/audit any app, website, mobile app, backend API, CLI, automation, data script, docs, or repo workflow. Sample triggers: "lam app quan ly kho", "viet tool CLI doi ten file", "them API webhook", "fix loi", "deploy len vercel", "test login", "don code". Classifies intent → loads one branch file from `branches/`; branches and agents detect stack before choosing skills. SAFE clarifies+approves; YOLO ("lam luon"/"nhanh nha"/"auto"/"yolo") skips gates. Reply in user''s language.'
 ---
 
 # taw — Single Entrypoint
@@ -11,7 +11,7 @@ You are `taw`. User gives you free-form prose in any language (VN, EN, mixed). Y
 
 Broad-match Vietnamese + English so user can keep typing plain prose without re-invoking the skill every turn.
 
-**BUILD (create/add):** "build me", "make me", "create a", "scaffold", "I need an app", "add a feature", "extend with", "new project", "start with template", "lam cho toi", "tao cho toi mot", "xay dung", "lam landing page", "lam website", "can mot app", "shop online", "tao du an", "them tinh nang", "toi muon them", "them trang", "them form", "them nut", "mo rong voi".
+**BUILD (create/add):** "build me", "make me", "create a", "scaffold", "I need an app", "add a feature", "extend with", "new project", "start with template", "lam cho toi", "tao cho toi mot", "xay dung", "lam landing page", "lam website", "can mot app", "shop online", "tao du an", "them tinh nang", "toi muon them", "them trang", "them form", "them nut", "mo rong voi", "mobile app", "expo app", "backend api", "api server", "cli tool", "script", "automation", "bot", "cron", "data pipeline", "etl", "report generator", "docs site", "internal tool", "tao tool", "viet script", "lam api", "lam backend", "app dien thoai", "tu dong hoa".
 
 **FIX (diagnose+fix):** "fix it", "it's broken", "build fail", "error", "crash", "something's wrong", "doesn't work", "loi roi", "bi loi", "hong roi", "be roi", "khong chay", "khong chay duoc", "fix giup toi", "website bi hong", "co loi xuat hien", "sua loi", "sua giup toi", "co van de", "bi van de", "chet roi", "sap roi", "crash roi".
 
@@ -128,7 +128,7 @@ Create it?
 Load the branch file via `@`-reference (e.g. `@branches/build.md`). Execute its Steps 1..N in order. The branch file is the source of truth for its flow — this SKILL.md does not duplicate the logic.
 
 Branch files live at:
-- `branches/build.md` — create new project, add feature, scaffold from preset (merged NEW + ADD + PRESET flows)
+- `branches/build.md` — create new project or add feature across web, mobile, backend, CLI, automation, data, docs, or repo tooling
 - `branches/fix.md` — diagnose + auto-fix broken build/runtime
 - `branches/ship.md` — deploy to Vercel / Docker / VPS
 - `branches/maintain/security.md` — security audit (P0/P1/P2)
@@ -194,7 +194,7 @@ NEVER write API keys, tokens, or secrets into `.taw/` files. Redact before write
 
 ## Stack adaptation rule (MUST follow for every branch + every loaded skill)
 
-The default stack (Next.js + Tailwind + shadcn + Supabase + Polar) is a **suggestion for NEW projects only**. For existing projects, do the opposite: **detect what's already there and adapt**.
+The default stack (Next.js + Tailwind + shadcn + Supabase + Polar) is a **web-app suggestion for NEW projects only**. For every other target, and for every existing project, do the opposite: **detect what's already there and adapt**.
 
 Before a branch or a loaded skill writes any code / runs any install, execute this detection pass:
 
@@ -217,8 +217,9 @@ Before a branch or a loaded skill writes any code / runs any install, execute th
 
 3. **Read `supabase/migrations/` or `drizzle/` or `prisma/schema.prisma`** — determine DB layer.
 
-4. **Decide adaptation mode:**
-   - **Empty project / no matching dep** → follow taw-kit default (suggest install).
+4. **Decide target + adaptation mode:**
+   - **Empty project / no matching dep + user did not specify target** → default to web app stack.
+   - **User specifies mobile / backend API / CLI / automation / data / docs** → plan that target; do NOT force Next.js.
    - **One alternative detected** → use that alternative throughout this branch. Load the matching skill (e.g. `stripe-checkout` instead of `payment-integration`, `clerk-auth` instead of `auth-magic-link`).
    - **Multiple alternatives in same category** (rare — e.g. both Clerk AND Supabase auth) → ask user which one is the source of truth.
    - **User explicitly requested something different** in their prose ("add auth with Clerk" even if project has Supabase) → honour the request, but warn about mixing.
@@ -250,6 +251,21 @@ taw-kit defaults to **autonomous action for safe ops**, not "ask before everythi
 
 **Exception — safe-mode approval gate (BUILD branch only):** the Step 4 approval gate in BUILD is a DELIBERATE HARD-GATE because it trades 1 user message for preventing 5 minutes of wrong-direction build. This is the single approved interruption point per BUILD run. Other branches must NOT replicate this pattern.
 
+## Skill selection policy (Codex should auto-pick)
+
+Users should not need to remember `$taw` or individual skill names. When the user's prose clearly maps to a more specific installed skill, prefer that skill directly; use `taw` for broad orchestration, ambiguous product work, or multi-step repo workflows.
+
+Examples:
+- "commit dùm" → `taw-commit`
+- "mở PR" / "tạo branch" → `taw-git`
+- "lịch sử ai sửa file này" → `taw-trace`
+- "debug bằng logs" → `debug-flight-recorder`
+- "viết Playwright e2e" → `testing-playwright`
+- "thêm Stripe checkout" → `stripe-checkout`
+- "vẽ sơ đồ kiến trúc" → `mermaidjs-v11`
+- "làm app mobile Expo" → `taw` routes BUILD with `target: mobile`, then `agent-mobile-dev`
+- "làm CLI/backend/script" → `taw` routes BUILD with non-web target, then `agent-fullstack-dev` as general implementation agent
+
 ## Shell compatibility rule (prevents silent bugs)
 
 Inside Codex CLI, `grep` is a shell function that wraps `ugrep` with extra flags. This wrapper has **non-POSIX exit-code semantics in pipelines** — `grep -v <pattern> >/dev/null` can return exit 0 even when output is empty, which silently corrupts boolean checks.
@@ -279,7 +295,7 @@ This rule is absolute — any new branch/skill doing security checks or state-de
 
 - **One entrypoint, one command.** The old `$taw build`, `$taw add`, `$taw fix`, `$taw deploy`, `$taw security` skills are kept as thin shims that redirect to `$taw`. Do NOT add new top-level `/taw-*` skills — add a new branch file under `branches/` instead.
 - **One approval gate per BUILD flow.** Branches MAINTAIN/* ask targeted confirmations as needed but never bundle a full project-wide approval step. FIX auto-fixes but asks before destructive actions. SHIP runs security as a blocking gate.
-- **Default stack**: Next.js 14 App Router + Tailwind + shadcn/ui + Supabase + Polar. Deploy default is Vercel. Override only if user explicitly asks or the project is Expo/mobile.
+- **Default stack**: Next.js 14 App Router + Tailwind + shadcn/ui + Supabase + Polar only for unspecified NEW web apps. Override whenever user asks for mobile, backend, CLI, automation, data, docs, or existing project deps indicate a different stack.
 - **Context budget**: if conversation grows past 150k tokens during a long branch (BUILD agent chain especially), compact via `.taw/artifacts/` on disk and summarize.
 - **Empty args**: let the router emit its own "what do you want to do?" menu (see `router.md` → Empty args). Do not pre-empt it here.
 - **Language consistency**: once language is detected on first interaction, keep it for the entire session unless user explicitly switches.

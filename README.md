@@ -1,6 +1,6 @@
 # taw-kit-codex
 
-> Bộ kit **Codex CLI** cho người không biết code — ra mắt sản phẩm thật chỉ bằng một câu tiếng Việt.
+> Bộ kit **Codex CLI** cho người không biết code — làm sản phẩm, tool, script, API, app mobile, hoặc workflow repo thật chỉ bằng một câu tiếng Việt.
 >
 > Bản port của [taw-kit](https://github.com/nghiahsgs/taw-kit) (vốn cho Claude Code) sang **OpenAI Codex CLI**.
 
@@ -130,9 +130,11 @@ Mỗi dòng có 2 cách viết: **prose** (auto-trigger, tự nhiên) và **expl
 
 ## Bạn nhận được gì
 
-- **~40 skills, 6 agent-roles, 3 hooks** — đóng gói thành 1 Codex plugin (`taw`)
+- **46 skills, 6 agent-roles, 3 hooks** — đóng gói thành 1 Codex plugin (`taw`)
 - **1 entrypoint duy nhất `$taw`** — router 2 tầng tự hiểu tạo mới / thêm / sửa / deploy / test / nâng cấp / dọn code / rollback / refactor / audit
-- **Stack adaptation** — mặc định Next.js + Supabase + Polar, nhưng tự detect project hiện tại đang dùng Stripe/Drizzle/Clerk... và respect, không ghi đè
+- **Natural-language routing** — không cần nhớ lệnh; cứ gõ việc cần làm, Codex tự match `taw` hoặc skill cụ thể như `taw-commit`, `testing-playwright`, `stripe-checkout`
+- **Flexible targets** — web, mobile, backend API, CLI, automation, data/reporting, docs, repo workflow
+- **Stack adaptation** — mặc định Next.js + Supabase + Polar chỉ cho web app mới chưa rõ stack; còn lại tự detect Stripe/Drizzle/Clerk/Expo/Python/etc. và respect, không ghi đè
 - **Tự maintain AGENTS.md** — kit cập nhật file memory cho Codex sau mỗi run. Tiết kiệm token + accurate hơn cho repo lớn
 - **Design có gu** — bundle skill `frontend-design` (Anthropic, Apache 2.0) tránh "AI slop"
 - **Dev workflow skills** — testing (vitest/playwright/rls), CI (GitHub Actions), bundle analyzer, knip, dep upgrade an toàn, Stripe alt, Sentry, taw-commit, taw-git, debug-flight-recorder, status dashboard

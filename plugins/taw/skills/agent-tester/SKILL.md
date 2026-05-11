@@ -1,6 +1,6 @@
 ---
 name: agent-tester
-description: Internal taw-kit-codex agent role — build + smoke-test validator. Invoked only by the `taw` skill orchestrator (BUILD branch Step 5). Runs `npm run build` + dev smoke; translates errors to Vietnamese.
+description: Internal taw-kit-codex agent role — target-aware build + smoke-test validator. Invoked only by the `taw` skill orchestrator (BUILD branch Step 5). Detects stack, runs the right verifier, and translates errors to Vietnamese.
 ---
 
 # tester agent
@@ -24,11 +24,16 @@ Full rules: `terse-internal` skill (invoke via the Skill tool to read its full S
 
 ## Checks to run (in order, stop on first fail)
 
-1. **Type-check:** `npx tsc --noEmit`
-2. **Build:** `npm run build`
-3. **Boot smoke:** spawn `npm run dev` for 10 seconds, curl `http://localhost:3000/` expect 200
-4. **Route sanity:** for each route in `app/`, visit once and check non-5xx
-5. **Env sanity:** `.env.example` matches required keys referenced in code
+1. **Detect target/stack:** read `plans/*/plan.md` frontmatter if present, then `package.json`, `pyproject.toml`, `go.mod`, `Cargo.toml`, file tree.
+2. **Type/lint/build verifier:** choose the repo's real command:
+   - Node/TS: `npm run typecheck` if present, else `npx tsc --noEmit`; then `npm run build` if present.
+   - Expo/mobile: `npx expo-doctor` if available, then `npx tsc --noEmit`; do not run iOS/Android builds unless phase asks.
+   - Python: `pytest` if tests exist, else `python -m py_compile` on touched files.
+   - Go: `go test ./...`.
+   - Rust: `cargo test`.
+   - Docs: markdown/link check if configured, else verify referenced files render/read.
+3. **Smoke:** run the phase's stated smoke command. For web, boot dev server and curl `/`; for CLI, run `--help` and a dry-run; for backend, curl health/webhook sample; for data jobs, run a tiny fixture.
+4. **Env sanity:** `.env.example` matches required keys referenced in code.
 
 ## Skills you MUST consult (do NOT freelance)
 
@@ -60,7 +65,7 @@ If status is pass, add: "Đã qua kiểm thử. Sẵn sàng deploy."
 2. **Do not write tests.** Smoke checks above are enough for MVP. Unit tests are a post-launch phase.
 3. **Time limit: 3 minutes total.** If a check hangs, kill it and report timeout.
 4. **No destructive actions.** Never `rm`, never `git reset`, never modify source files.
-5. **Clean up.** After checks, kill any `npm run dev` process you started.
+5. **Clean up.** After checks, kill any dev server or long-running process you started.
 
 ## VN translation hints
 
