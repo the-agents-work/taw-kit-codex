@@ -27,7 +27,7 @@ bash ~/.taw-kit-codex/scripts/install.sh
 
 Installer sẽ (mặc định **chế độ user — copy**):
 1. **Copy** từng thư mục skill vào `~/.codex/skills/<name>/` (cross-platform an toàn, kể cả Windows native).
-2. Backup skill cũ trùng tên (nếu có) sang `<name>.bak.<timestamp>`.
+2. Replace bản skill cũ do taw-kit quản lý. Nếu gặp skill cùng tên không có marker taw-kit, installer sẽ cảnh báo trước khi xoá.
 3. Đăng ký marketplace qua `codex plugin marketplace add`.
 
 **Chế độ dev — symlink** (cho contributor muốn sửa repo và test ngay, không cần cài lại):
@@ -46,11 +46,20 @@ Symlink chỉ chạy được trên macOS / Linux / WSL. Trên **Windows native*
 TAW_YES=1 bash ~/.taw-kit-codex/scripts/install.sh
 ```
 
+Nếu trước đó bạn tự sửa hoặc tự tạo skill trùng tên trong `~/.codex/skills`, installer sẽ không âm thầm xoá trong chế độ `TAW_YES=1`. Chọn một trong hai:
+
+```bash
+TAW_FORCE_REPLACE=1 TAW_YES=1 bash ~/.taw-kit-codex/scripts/install.sh      # xoá và thay bản mới
+TAW_BACKUP_UNMANAGED=1 TAW_YES=1 bash ~/.taw-kit-codex/scripts/install.sh   # backup ra ~/.codex/skill-backups/taw/
+```
+
 ## 4. Verify
 
 ```bash
 codex plugin marketplace list
-ls ~/.codex/plugins/taw/skills | wc -l    # ~47 (40 skill + 6 agent + 1 README)
+find ~/.codex/skills -maxdepth 1 -type d -name '*.bak.*' | wc -l  # phải là 0
+test -f ~/.codex/skills/taw/.taw-kit-codex-managed
+ls ~/.codex/skills/taw ~/.codex/skills/agent-fullstack-dev
 ```
 
 Mở Codex và thử (1 trong 3 cách):
@@ -82,8 +91,10 @@ git pull
 ## 6. Gỡ
 
 ```bash
-rm -rf ~/.codex/plugins/taw
-# Sau đó xoá entry "taw-kit-codex" khỏi ~/.agents/plugins/marketplace.json (sửa tay)
+while IFS= read -r skill; do
+  rm -rf "$HOME/.codex/skills/$skill"
+done < <(find ~/.taw-kit-codex/plugins/taw/skills -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+# Nếu đã đăng ký marketplace, xoá entry taw trong ~/.codex/config.toml hoặc bằng lệnh Codex CLI nếu bản CLI hỗ trợ remove.
 ```
 
 ## 7. Lỗi thường gặp
@@ -92,14 +103,14 @@ rm -rf ~/.codex/plugins/taw
 Cài Codex CLI trước (mục 2).
 
 ### Skill không tự kích hoạt
-- Kiểm tra plugin có thực sự ở `~/.codex/plugins/taw/`.
-- Kiểm tra `marketplace.json` có entry không: `cat ~/.agents/plugins/marketplace.json`.
+- Kiểm tra skill có thực sự ở `~/.codex/skills/taw/SKILL.md`.
+- Kiểm tra marketplace có entry không: `codex plugin marketplace list`.
 - Restart Codex (gõ `/quit` rồi mở lại).
 
 ### Hook không chạy
-- `chmod +x ~/.codex/plugins/taw/hooks/*.sh`
-- Kiểm tra `~/.codex/plugins/taw/hooks.json` có path đúng không.
-- Tạm thời tắt: rename `hooks.json` → `hooks.json.disabled` rồi restart Codex.
+- Hiện installer chỉ copy skills; hooks chưa tự kích hoạt.
+- Nếu cần hooks, đăng ký plugin qua UI/plugin flow của Codex hoặc copy cấu hình `plugins/taw/hooks.json` vào cấu hình Codex theo bản CLI đang dùng.
+- Các skill chính vẫn chạy bình thường dù hooks chưa bật.
 
 ### Cần API key thay vì ChatGPT subscription
 Set env var:

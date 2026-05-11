@@ -163,7 +163,7 @@ bash ~/.taw-kit-codex/scripts/install.sh
 Installer sẽ:
 1. Phát hiện Codex CLI (báo lỗi nếu chưa cài).
 2. Copy 46 skills vào `~/.codex/skills/<name>/` (Codex auto-discover từ đây).
-3. Backup skill cũ trùng tên (nếu có) sang `<name>.bak.<timestamp>`.
+3. Replace bản skill cũ do taw-kit quản lý. Nếu gặp skill cùng tên không có marker taw-kit, installer sẽ cảnh báo trước khi xoá.
 4. Đăng ký marketplace qua `codex plugin marketplace add`.
 
 > Mặc định **copy** (cross-platform). Dev contributor muốn live-edit: `TAW_SYMLINK=1 bash scripts/install.sh`.
