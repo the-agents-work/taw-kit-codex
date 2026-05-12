@@ -27,7 +27,9 @@ Broad-match Vietnamese + English so user can keep typing plain prose without re-
 
 **MAINTAIN→ROLLBACK:** "rollback", "revert", "undo", "go back", "previous version", "lui lai", "quay lai", "ban truoc", "ban cu", "huy thay doi", "revert commit", "quay ve hom qua", "rollback deploy".
 
-**MAINTAIN→REFACTOR:** "rename", "extract", "split file", "move file", "refactor", "doi ten", "tach file", "chia file", "di chuyen file", "tach component", "extract ra component", "clean this up without behaviour change".
+**MAINTAIN→REFACTOR:** "rename", "extract", "split file", "move file", "refactor", "doi ten", "tach file", "chia file", "di chuyen file", "tach component", "extract ra component", "clean this up without behaviour change", "tạo list cần refactor", "tao list can refactor", "call api trước/sau", "call api truoc/sau", "before/after api", "hot reload", "refactor BE", "refactor backend", "safety first".
+
+**MAINTAIN→TASK-LOOP:** "ralph", "task loop", "task queue", "prd.json", "passes true", "long-running task", "agent loop", "run task queue", "auto tasks", "non stop", "vong lap task", "lam toi khi het task".
 
 **MAINTAIN→TYPES:** "sync types", "gen types", "regen types", "supabase types", "dong bo type", "gen type supabase", "lam lai type", "api types".
 
@@ -63,7 +65,7 @@ Load `@router.md` and follow its classification rules. Output: exactly ONE branc
 
 Router handles:
 - Tier 1 classification: `BUILD` | `FIX` | `SHIP` | `MAINTAIN` | `ADVISOR`
-- Tier 2 (when `MAINTAIN`): `test` | `upgrade` | `clean` | `perf` | `rollback` | `refactor` | `types` | `seed` | `review` | `security` | `stack-swap` | `status` | `memory`
+- Tier 2 (when `MAINTAIN`): `test` | `upgrade` | `clean` | `perf` | `rollback` | `refactor` | `task-loop` | `types` | `seed` | `review` | `security` | `stack-swap` | `status` | `memory`
 - Tier 2 (when `ADVISOR`): `analyze` | `suggest` | `coverage` | `adversarial` | `scope-check`
 - Mode detection: `safe` (default) vs `yolo`
 - Empty args / ambiguous → ask ONE clarifying question, then re-classify
@@ -137,7 +139,8 @@ Branch files live at:
 - `branches/maintain/clean.md` — remove dead code / unused deps / orphan files
 - `branches/maintain/perf.md` — bundle / lighthouse / N+1 audit
 - `branches/maintain/rollback.md` — revert code and/or deploy
-- `branches/maintain/refactor.md` — rename / extract / split / move
+- `branches/maintain/refactor.md` — rename / extract / split / move, or backend API refactor loops with before/after API checks
+- `branches/maintain/task-loop.md` — Ralph-style task queue loop with JSON state, checks, commits, and progress log
 - `branches/maintain/types.md` — sync Supabase/API/env types
 - `branches/maintain/seed.md` — gen realistic seed data
 - `branches/maintain/review.md` — local pre-push review (lint+type+test+security)

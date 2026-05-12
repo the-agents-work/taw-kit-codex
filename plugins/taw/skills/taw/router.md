@@ -25,7 +25,8 @@ Only reached when Tier 1 resolved to `MAINTAIN`. Try keyword match first. If key
 | `clean` | `@branches/maintain/clean.md` | clean, dọn, don, unused, dead code, xoá rác, xoa rac, "dọn code", tidy, prune |
 | `perf` | `@branches/maintain/perf.md` | perf, tốc độ, toc do, chậm, cham, slow, bundle, lighthouse, N+1, "tối ưu", toi uu, optimize |
 | `rollback` | `@branches/maintain/rollback.md` | rollback, lùi, lui, undo, revert, "bản trước", ban truoc, "quay lại" |
-| `refactor` | `@branches/maintain/refactor.md` | refactor, rename, đổi tên, doi ten, extract, tách file, tach file, split, "tách component" |
+| `refactor` | `@branches/maintain/refactor.md` | refactor, rename, đổi tên, doi ten, extract, tách file, tach file, split, "tách component", "tạo list cần refactor", "tao list can refactor", "call api trước", "call api truoc", "call api sau", "before/after api", "api trước/sau", "api truoc/sau", "hot reload", "refactor BE", "refactor backend", "safety first" |
+| `task-loop` | `@branches/maintain/task-loop.md` | ralph, task loop, task queue, prd.json, "passes true", "long-running task", "long running task", "agent loop", "run task queue", "auto tasks", "non stop", "vòng lặp task", "vong lap task", "làm tới khi hết task", "lam toi khi het task" |
 | `types` | `@branches/maintain/types.md` | types, type sync, supabase types, gen types, "đồng bộ type", api types |
 | `seed` | `@branches/maintain/seed.md` | seed, data giả, data gia, fake data, dummy, sample data, "tạo data test" |
 | `review` | `@branches/maintain/review.md` | review, pr review, "tự review", tu review, "kiểm tra trước khi push", lint+type+test |

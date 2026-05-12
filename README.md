@@ -1,225 +1,275 @@
 # taw-kit-codex
 
-> Bộ kit **Codex CLI** cho người không biết code — làm sản phẩm, tool, script, API, app mobile, hoặc workflow repo thật chỉ bằng một câu tiếng Việt.
->
-> Bản port của [taw-kit](https://github.com/nghiahsgs/taw-kit) (vốn cho Claude Code) sang **OpenAI Codex CLI**.
+Global Codex skills for building, fixing, testing, refactoring, deploying, and maintaining real
+software projects from plain-language prompts.
 
-```
-> lam cho toi mot shop my pham online
-  → hỏi lại cho rõ (3–5 câu)
-  → lập kế hoạch 5 ý, bạn duyệt
-  → code + test + review
-  → deploy (Vercel, Docker, hoặc VPS)
-  → trả về URL đã chạy
-```
+This is the OpenAI Codex port of [`taw-kit`](https://github.com/nghiahsgs/taw-kit). Install it
+once and the skills are available globally in Codex from any repo.
 
----
-
-## Cách gọi `taw` trong Codex
-
-Codex **không có** `/taw` slash command như Claude. Có 3 cách dùng:
-
-### 1) Auto-trigger qua prose (khuyên dùng — đỡ gõ)
-
-Cứ gõ thẳng việc muốn làm bằng tiếng Việt:
-
-```
-> lam cho toi mot shop ca phe
-> them trang lien he
-> loi roi, fix gium
-> deploy len vercel
+```text
+> $taw build a coffee shop website
+  -> clarifies scope
+  -> drafts a short plan
+  -> builds the app
+  -> runs checks
+  -> reviews the result
+  -> deploys when asked
 ```
 
-Codex tự match description → fire skill `taw`.
+## What It Is
 
-### 2) Explicit `$taw` (tương đương `/taw` của Claude — ngắn nhất)
+`taw-kit-codex` is a user-level Codex plugin/skill pack:
 
-Gõ `$taw` rồi space và nội dung. Codex sẽ pop autocomplete dropdown ngay khi gõ `$`:
+- 47 bundled skills
+- 6 internal agent roles
+- one main entrypoint: `$taw`
+- direct utility skills such as `$taw-commit`, `$taw-git`, `$taw-trace`, and `$taw-task-loop`
+- stack-aware workflows for web, mobile, backend APIs, CLI tools, automation, data scripts, docs,
+  and repo maintenance
 
-![Codex TUI autocomplete khi gõ $taw](./docs/img/codex-taw-autocomplete.png)
+The default install copies skills into:
 
-Hiện ra hết các skill bắt đầu bằng `taw` (`taw`, `taw-commit`, `taw-git`, `taw-trace`, `taw-rn-supabase`...) + description. Bấm Enter chọn `taw` → tiếp tục gõ prose:
-
-```
-> $taw lam shop ca phe
-> $taw deploy
-> $taw status
-> $taw kiem tra bao mat
-```
-
-> Skills cài user-scope (`~/.codex/skills/`) nên không cần namespace — gõ `$taw` thẳng, không phải `$taw-kit-codex:taw`.
-
-### 3) Plain text mention (khi quên `$`)
-
-```
-> dung skill taw de lam shop ca phe
-> use the taw skill to add a contact form
+```bash
+~/.codex/skills/
 ```
 
-> ⚠️ `@` trong TUI là **file picker** (autocomplete file path), KHÔNG phải skill mention. Đừng gõ `@taw`, sẽ ra "no matches".
+That means the kit is global. You can open Codex inside any project and use `$taw` immediately.
 
----
+## Install
 
-## Cheatsheet — tất cả việc `taw` làm được
+Requirements:
 
-Mỗi dòng có 2 cách viết: **prose** (auto-trigger, tự nhiên) và **explicit** (`$taw <subcmd>`, ép kit chạy).
+- OpenAI Codex CLI
+- Node.js 20+
+- git
+- macOS, Linux, or Windows via WSL2
 
-### Tạo dự án / thêm tính năng
-
-| Việc | Prose | Explicit |
-|------|-------|----------|
-| Tạo mới | `lam cho toi mot shop ca phe` | `$taw build shop ca phe` |
-| Thêm tính năng | `them trang lien he` | `$taw add trang lien he` |
-| Thêm form | `them form dat hang` | `$taw add form dat hang` |
-
-### Sửa / debug
-
-| Việc | Prose | Explicit |
-|------|-------|----------|
-| Auto-fix lỗi build | `loi roi, fix gium` | `$taw fix` |
-| Debug bug khó | `bug khong tai hien duoc` | `$debug-flight-recorder` |
-
-### Deploy
-
-| Việc | Prose | Explicit |
-|------|-------|----------|
-| Vercel | `deploy len vercel` | `$taw deploy vercel` |
-| Docker | `dockerize giup` | `$taw deploy docker` |
-| VPS | `deploy len vps` | `$taw deploy vps` |
-| Mobile (Expo) | `len app store` | `$taw deploy expo` |
-
-### Maintain (bảo trì)
-
-| Việc | Prose | Explicit |
-|------|-------|----------|
-| Test | `test cai login` | `$taw test login` |
-| Upgrade deps | `nang cap next len 15` | `$taw upgrade next 15` |
-| Dọn dead code | `don code dum` | `$taw clean` |
-| Check perf | `cham qua, check perf` | `$taw perf` |
-| Rollback | `lui lai ban hom qua` | `$taw rollback` |
-| Refactor | `tach component nay` | `$taw refactor` |
-| Sync types | `gen lai supabase types` | `$taw types` |
-| Seed data | `seed du lieu vn` | `$taw seed` |
-| Pre-push review | `tu review truoc khi push` | `$taw review` |
-| Security audit | `kiem tra bao mat` | `$taw security` |
-| Stack swap | `doi polar sang stripe` | `$taw stack-swap polar stripe` |
-| Status dashboard | `xem tinh hinh du an` | `$taw status` |
-| Memory (AGENTS.md) | `tao agents.md` | `$taw memory init` |
-
-### Advisor (review opinionated)
-
-| Việc | Prose | Explicit |
-|------|-------|----------|
-| Phân tích code | `phan tich kien truc` | `$taw analyze` |
-| Gợi ý feature | `nen build gi tiep` | `$taw suggest` |
-| Test coverage gap | `xem coverage` | `$taw coverage` |
-| Adversarial / red team | `tim lo hong` | `$taw adversarial` |
-| Scope check | `built dung yeu cau chua` | `$taw scope-check` |
-
-### Git utilities (gọi trực tiếp skill, không qua `taw`)
-
-| Việc | Explicit |
-|------|----------|
-| Commit thông minh | `$taw-commit` |
-| Tạo branch / PR | `$taw-git branch <name>` / `$taw-git pr` |
-| Tra git history | `$taw-trace ai sua cai nay` |
-
-> **Mẹo:** Khi gõ `$` trong Codex TUI, nó pop autocomplete dropdown — chọn skill bằng arrow keys + Enter, không cần nhớ tên chính xác.
-
----
-
-## Bạn nhận được gì
-
-- **46 skills, 6 agent-roles, 3 hooks** — đóng gói thành 1 Codex plugin (`taw`)
-- **1 entrypoint duy nhất `$taw`** — router 2 tầng tự hiểu tạo mới / thêm / sửa / deploy / test / nâng cấp / dọn code / rollback / refactor / audit
-- **Natural-language routing** — không cần nhớ lệnh; cứ gõ việc cần làm, Codex tự match `taw` hoặc skill cụ thể như `taw-commit`, `testing-playwright`, `stripe-checkout`
-- **Flexible targets** — web, mobile, backend API, CLI, automation, data/reporting, docs, repo workflow
-- **Stack adaptation** — mặc định Next.js + Supabase + Polar chỉ cho web app mới chưa rõ stack; còn lại tự detect Stripe/Drizzle/Clerk/Expo/Python/etc. và respect, không ghi đè
-- **Tự maintain AGENTS.md** — kit cập nhật file memory cho Codex sau mỗi run. Tiết kiệm token + accurate hơn cho repo lớn
-- **Design có gu** — bundle skill `frontend-design` (Anthropic, Apache 2.0) tránh "AI slop"
-- **Dev workflow skills** — testing (vitest/playwright/rls), CI (GitHub Actions), bundle analyzer, knip, dep upgrade an toàn, Stripe alt, Sentry, taw-commit, taw-git, debug-flight-recorder, status dashboard
-- **License Apache-2.0** — dùng + phân phối tự do, kể cả thương mại
-
----
-
-## Cài đặt
-
-### Yêu cầu
-
-| Thứ | Để làm gì | Cài ở đâu |
-|-----|-----------|-----------|
-| **Codex CLI** | Runtime AI để chạy skill | [github.com/openai/codex](https://github.com/openai/codex) |
-| **Node.js ≥ 20** | Project taw-kit tạo ra chạy trên đây | [nodejs.org](https://nodejs.org) |
-| **git** | Clone repo | `brew install git` / `apt install git` |
-| **OpenAI API key** hoặc **ChatGPT Plus** | Codex CLI gọi model | [platform.openai.com](https://platform.openai.com) |
-
-**OS:** macOS, Linux, hoặc Windows qua WSL2.
-
-### Cài
+Install globally:
 
 ```bash
 git clone https://github.com/the-agents-work/taw-kit-codex.git ~/.taw-kit-codex
 bash ~/.taw-kit-codex/scripts/install.sh
 ```
 
-Installer sẽ:
-1. Phát hiện Codex CLI (báo lỗi nếu chưa cài).
-2. Copy 46 skills vào `~/.codex/skills/<name>/` (Codex auto-discover từ đây).
-3. Replace bản skill cũ do taw-kit quản lý. Nếu gặp skill cùng tên không có marker taw-kit, installer sẽ cảnh báo trước khi xoá.
-4. Đăng ký marketplace qua `codex plugin marketplace add`.
-
-> Mặc định **copy** (cross-platform). Dev contributor muốn live-edit: `TAW_SYMLINK=1 bash scripts/install.sh`.
-
-### Update
+Update:
 
 ```bash
-cd ~/.taw-kit-codex && git pull && bash scripts/install.sh
+cd ~/.taw-kit-codex
+git pull
+bash scripts/install.sh
 ```
 
-### Verify
+Developer mode with live symlinks:
 
 ```bash
-ls ~/.codex/skills | head     # phải thấy taw, agent-*, các skill khác
-codex                          # mở TUI
-> $taw                         # gõ $ → autocomplete dropdown hiện skill list
+TAW_SYMLINK=1 bash scripts/install.sh
 ```
 
----
-
-## Chạy lần đầu
+Verify:
 
 ```bash
-mkdir my-first-product && cd my-first-product
+ls ~/.codex/skills | grep '^taw'
 codex
 ```
 
-Trong Codex TUI:
+Then type `$` in the Codex TUI. Codex should show `taw`, `taw-commit`, `taw-git`,
+`taw-task-loop`, and the rest of the installed skills.
+
+## How To Use It
+
+Codex does not have custom slash commands. Use one of these patterns.
+
+### 1. Explicit Skill Call
+
+Use `$taw` when you want to force the main orchestrator:
+
+```text
+> $taw build a landing page for an online course
+> $taw add a contact form
+> $taw fix the build error
+> $taw deploy to Vercel
+> $taw refactor the backend safely; call APIs before and after
+> $taw task-loop from this PRD until all tasks pass
 ```
-> lam cho toi 1 landing page ban khoa hoc online
+
+### 2. Plain Language
+
+You can also type naturally. Codex will usually trigger the right skill from the description:
+
+```text
+> build me a CRM dashboard
+> this Next.js app is broken, fix it
+> write Playwright tests for login
+> refactor this backend API in small safe loops
 ```
 
-Codex auto-trigger skill `taw`, hỏi 3–5 câu clarify, hiện kế hoạch, đợi duyệt. Gõ `yes` → chạy: plan → research → code → test → security review → deploy. Tổng ~15-20 phút.
+### 3. Direct Utility Skills
 
----
+Some skills are useful without the full `$taw` router:
 
-## Khác biệt so với bản Claude Code
+```text
+> $taw-commit
+> $taw-git pr
+> $taw-trace who changed this file
+> $taw-task-loop run .taw/task-loop.json non stop
+```
 
-| Tính năng | taw-kit (Claude) | taw-kit-codex |
-|-----------|------------------|---------------|
-| Gọi rõ ràng | `/taw <prose>` | `$taw <prose>` (Codex không có custom slash, `@` chỉ là file picker) |
-| Auto-trigger qua prose | Có | Có (cùng cơ chế description match) |
-| Subagent chạy song song | 2 researcher song song | Tuần tự (chậm hơn ~30s) |
-| Skills format | `name` + `description` frontmatter | Giống nhau |
-| Hooks (PreToolUse / PostToolUse / SessionStart...) | Có | Có (cùng JSON shape) |
-| Sandbox / approval modes | plan / acceptEdits / bypassPermissions | `--sandbox` workspace-write / read-only / danger-full-access |
-| Memory file | `CLAUDE.md` | `AGENTS.md` |
+Do not use `@taw`. In Codex TUI, `@` is a file picker, not a skill mention.
 
----
+## Main Workflows
 
-## Đóng góp
+| Workflow | Example |
+|---|---|
+| Build a new app/site/tool | `$taw build an inventory app` |
+| Add a feature | `$taw add a booking form` |
+| Fix a broken project | `$taw fix` |
+| Deploy | `$taw deploy vercel` |
+| Generate tests | `$taw test checkout flow` |
+| Upgrade dependencies | `$taw upgrade next 15` |
+| Clean dead code | `$taw clean` |
+| Analyze performance | `$taw perf` |
+| Roll back safely | `$taw rollback` |
+| Refactor safely | `$taw refactor` |
+| Sync generated types | `$taw types` |
+| Seed data | `$taw seed Vietnamese sample data` |
+| Security review | `$taw security` |
+| Project status | `$taw status` |
+| Long-running task queue | `$taw task-loop` |
 
-- **Repo:** [github.com/the-agents-work/taw-kit-codex](https://github.com/the-agents-work/taw-kit-codex)
-- **Bản gốc Claude Code:** [github.com/nghiahsgs/taw-kit](https://github.com/nghiahsgs/taw-kit)
-- **License:** Apache-2.0 (xem [LICENSE](./LICENSE))
+## Backend API Refactor Loop
 
-Built by [the-agents-work](https://www.theagents.work/).
+`$taw refactor` includes a safety-first backend mode for existing APIs.
+
+Use it like this:
+
+```text
+> $taw refactor this backend safely.
+> Base URL is http://localhost:3010.
+> DB is MONGOOSE_URI=mongodb://localhost:27017/app_db.
+> Create a refactor list, call APIs before and after every small refactor,
+> wait for hot reload, and continue non stop.
+```
+
+The workflow is:
+
+1. create or update `.taw/refactor-list.md`
+2. pick a small low-risk slice
+3. call a baseline API first
+4. edit one small module/helper/route registry
+5. wait for reload: 30s, then 60s, then 120s if needed
+6. call the same API again
+7. compare status/body/headers or stable semantic fields
+8. run build/type checks
+9. log the pass and continue
+
+Local auth is supported. If the local DB and JWT secret are available, the workflow can mint a
+temporary local token from an existing local user without printing the token.
+
+## Ralph-Style Task Loop
+
+The kit includes `$taw-task-loop`, inspired by Ralph-style long-running agents.
+
+The idea:
+
+- keep task state in `.taw/task-loop.json`
+- keep progress in `.taw/task-loop-progress.md`
+- use git commits as durable checkpoints
+- complete one small verifiable task per loop
+- run checks before marking `passes: true`
+- continue until all safe tasks are passed or blocked
+
+Example:
+
+```text
+> $taw-task-loop create a task queue from this PRD and run it non stop.
+```
+
+Default task shape:
+
+```json
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "Add unit tests for auth helpers",
+      "priority": 100,
+      "status": "pending",
+      "passes": false,
+      "checks": ["npm test -- auth"],
+      "notes": ""
+    }
+  ]
+}
+```
+
+This is best for small, easy-to-check work: tests, migrations, component splits, API refactors,
+docs, lint cleanup, or one user story at a time.
+
+## Stack Adaptation
+
+The kit does not force one stack onto every project.
+
+For new web apps, it may suggest the default taw stack: Next.js, Tailwind, shadcn/ui, Supabase,
+and Polar. For existing projects, it detects and respects what is already there: Stripe, Clerk,
+NextAuth, Prisma, Drizzle, Expo, Vite, Python, Docker, Playwright, Vitest, Jest, and more.
+
+## Skill Catalog
+
+Key user-facing skills:
+
+- `taw` - main natural-language router
+- `taw-commit` - scan/stage/commit with a conventional message
+- `taw-git` - branches, PRs, merges, recovery
+- `taw-trace` - git history lookup without remembering git commands
+- `taw-task-loop` - JSON task queue loop for long-running work
+
+Common specialist skills:
+
+- `frontend-design`
+- `nextjs-app-router`
+- `building-native-ui`
+- `testing-vitest`
+- `testing-playwright`
+- `github-actions-ci`
+- `supabase-setup`
+- `stripe-checkout`
+- `payment-integration`
+- `sentry-errors`
+- `debug`
+- `debug-flight-recorder`
+- `docs-seeker`
+
+Internal agent roles are bundled for taw orchestration:
+
+- `agent-planner`
+- `agent-researcher`
+- `agent-fullstack-dev`
+- `agent-mobile-dev`
+- `agent-tester`
+- `agent-reviewer`
+
+## Notes For Claude Code Users
+
+| Claude taw-kit | taw-kit-codex |
+|---|---|
+| `/taw ...` | `$taw ...` |
+| `@` may mention agents/files depending on UI | `@` is a Codex file picker |
+| `CLAUDE.md` memory | `AGENTS.md` / project memory depending on repo |
+| Claude Code subagents | Codex skills and agent-style workflows |
+
+## Contributing
+
+Repo:
+
+```text
+https://github.com/the-agents-work/taw-kit-codex
+```
+
+Original Claude Code kit:
+
+```text
+https://github.com/nghiahsgs/taw-kit
+```
+
+License: Apache-2.0.
