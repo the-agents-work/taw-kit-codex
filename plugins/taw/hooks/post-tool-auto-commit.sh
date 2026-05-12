@@ -49,7 +49,16 @@ fi
 
 # Nothing changed? nothing to do. Use porcelain so untracked new files count too.
 if [ -z "$(git status --porcelain 2>/dev/null)" ]; then
+  rm -f ".git/.taw-autocommit-disabled-dirty-start" 2>/dev/null || true
   log "no diff; skip"
+  exit 0
+fi
+
+# Safety: if the repo was already dirty when the Codex session started, never
+# auto-commit that work. Once the user gets back to a clean tree, SessionStart /
+# this hook clears the marker and future sessions can auto-commit again.
+if [ -f ".git/.taw-autocommit-disabled-dirty-start" ]; then
+  log "dirty at session start; skip auto-commit to avoid capturing user changes"
   exit 0
 fi
 

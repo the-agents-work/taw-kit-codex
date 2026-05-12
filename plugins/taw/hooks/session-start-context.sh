@@ -16,6 +16,14 @@ if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   exit 0
 fi
 
+dirty_marker=".git/.taw-autocommit-disabled-dirty-start"
+if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+  printf 'dirty at session start: %s\n' "$(date -u +%FT%TZ)" > "$dirty_marker" 2>/dev/null || true
+  log "dirty worktree at session start; auto-commit disabled until clean"
+else
+  rm -f "$dirty_marker" 2>/dev/null || true
+fi
+
 branch="$(git branch --show-current 2>/dev/null || echo 'detached')"
 commits="$(git log -3 --oneline 2>/dev/null | head -3)"
 
@@ -32,13 +40,13 @@ deploy_url=""
 # Emit a compact context block (≤20 lines cap)
 {
   printf '## Project context (taw-kit session-start)\n'
-  printf '- Branch: %s\n' "$branch"
+  printf '%s\n' "- Branch: $branch"
   if [ -n "$commits" ]; then
-    printf '- Recent commits:\n'
+    printf '%s\n' '- Recent commits:'
     printf '%s\n' "$commits" | sed 's/^/    /'
   fi
-  [ -n "$plan_dir" ]   && printf '- Active plan: %s\n' "$plan_dir"
-  [ -n "$deploy_url" ] && printf '- Deploy URL: %s\n' "$deploy_url"
+  [ -n "$plan_dir" ]   && printf '%s\n' "- Active plan: $plan_dir"
+  [ -n "$deploy_url" ] && printf '%s\n' "- Deploy URL: $deploy_url"
 } | head -20
 
 log "emitted context (branch=$branch, plan=$plan_dir, deploy=$deploy_url)"

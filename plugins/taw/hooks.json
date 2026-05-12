@@ -1,5 +1,5 @@
 {
-  "_comment": "taw-kit-codex hooks. Codex uses identical JSON shape to Claude Code v2 for SessionStart / PreToolUse / PostToolUse / UserPromptSubmit / Stop. permission-classifier is disabled by default because it parses Claude-shaped command strings; Codex passes commands as JSON arrays so the parser misses (it degrades safely to allow). Enable + improve in v0.2.",
+  "_comment": "taw-kit-codex hooks. Requires [features].codex_hooks = true. Installed by scripts/install.sh --hooks or TAW_INSTALL_HOOKS=1.",
   "hooks": {
     "SessionStart": [
       {
@@ -14,13 +14,13 @@
     ],
     "PostToolUse": [
       {
-        "matcher": "^(Edit|Write|local_shell)$",
+        "matcher": "^(Bash|Edit|Write|ApplyPatch|apply_patch|local_shell|exec_command)$",
         "hooks": [
           {
             "type": "command",
             "command": "bash ${CODEX_HOME:-$HOME/.codex}/plugins/taw/hooks/post-tool-auto-commit.sh",
             "timeout": 10,
-            "async": true
+            "statusMessage": "taw-kit auto-commit checkpoint"
           }
         ]
       }

@@ -51,6 +51,22 @@ git clone https://github.com/the-agents-work/taw-kit-codex.git ~/.taw-kit-codex
 bash ~/.taw-kit-codex/scripts/install.sh
 ```
 
+Install with Codex lifecycle hooks enabled:
+
+```bash
+TAW_INSTALL_HOOKS=1 bash ~/.taw-kit-codex/scripts/install.sh
+```
+
+Hooks enable session context and taw auto-commit checkpoints. The installer sets
+`[features].codex_hooks = true`, writes/merges `~/.codex/hooks.json`, and copies hook scripts to
+`~/.codex/plugins/taw/hooks/`. Existing hook entries are preserved.
+
+Auto-commit can be disabled per shell:
+
+```bash
+export TAW_NO_AUTOCOMMIT=1
+```
+
 Update:
 
 ```bash

@@ -4,7 +4,7 @@ You are running inside a project that has the **taw-kit-codex** plugin installed
 
 ## What this plugin gives you
 
-A bundle of 46 Vietnamese-friendly skills + 6 agent-role skills + 3 lifecycle hooks. Designed for users who describe software work in Vietnamese (or English) and expect a real result: web app, mobile app, backend API, CLI, automation script, data/reporting tool, docs, or repo workflow.
+A bundle of 47 Vietnamese-friendly skills + 6 agent-role skills + 3 lifecycle hooks. Designed for users who describe software work in Vietnamese (or English) and expect a real result: web app, mobile app, backend API, CLI, automation script, data/reporting tool, docs, or repo workflow.
 
 ## Single entrypoint: the `taw` skill
 
@@ -42,7 +42,7 @@ Detect the language of the user's input. If they write Vietnamese (or VN-style m
 ## Codex-specific notes (vs original Claude Code taw-kit)
 
 - **Subagents**: original ran `agent-planner`, `agent-researcher` x2, `agent-fullstack-dev`, `agent-tester`, `agent-reviewer` in a chain with parallel researchers. Codex CLI runs them **sequentially in-context** by invoking each `agent-*` skill. Total time ~30-60s slower; functionality identical.
-- **Hooks**: lifecycle hook JSON shape matches Claude Code 1:1 (`PreToolUse`, `PostToolUse`, `SessionStart`, etc.). All three taw-kit hooks ported as-is.
+- **Hooks**: lifecycle hook JSON follows Codex's `hooks.json` / inline `[hooks]` schema (`SessionStart`, `PostToolUse`, etc.). Installer can activate them with `TAW_INSTALL_HOOKS=1` or `--hooks`.
 - **Slash commands**: Codex does not support custom user-defined slash commands, and the `@` prefix in the TUI is a file-picker (not a skill mention). Trigger the `taw` skill via prose match alone — either implicit ("lam cho toi shop ca phe") or explicit ("dung skill taw de lam shop ca phe").
 - **Settings**: replaced Claude `settings.json` with Codex `~/.codex/config.toml` — see `docs/install.md`.
 

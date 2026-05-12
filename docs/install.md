@@ -46,6 +46,27 @@ Symlink chỉ chạy được trên macOS / Linux / WSL. Trên **Windows native*
 TAW_YES=1 bash ~/.taw-kit-codex/scripts/install.sh
 ```
 
+Để bật Codex lifecycle hooks của taw-kit:
+
+```bash
+TAW_INSTALL_HOOKS=1 bash ~/.taw-kit-codex/scripts/install.sh
+# hoặc interactive:
+bash ~/.taw-kit-codex/scripts/install.sh --hooks
+```
+
+Installer sẽ:
+
+1. Copy hook scripts vào `~/.codex/plugins/taw/hooks/`.
+2. Merge taw hook entries vào `~/.codex/hooks.json` mà không xoá hook khác.
+3. Backup `~/.codex/hooks.json` / `~/.codex/config.toml` trước khi sửa.
+4. Bật `[features].codex_hooks = true` trong `~/.codex/config.toml`.
+
+Auto-commit hook có thể tắt theo shell:
+
+```bash
+export TAW_NO_AUTOCOMMIT=1
+```
+
 Nếu trước đó bạn tự sửa hoặc tự tạo skill trùng tên trong `~/.codex/skills`, installer sẽ không âm thầm xoá trong chế độ `TAW_YES=1`. Chọn một trong hai:
 
 ```bash
@@ -108,9 +129,10 @@ Cài Codex CLI trước (mục 2).
 - Restart Codex (gõ `/quit` rồi mở lại).
 
 ### Hook không chạy
-- Hiện installer chỉ copy skills; hooks chưa tự kích hoạt.
-- Nếu cần hooks, đăng ký plugin qua UI/plugin flow của Codex hoặc copy cấu hình `plugins/taw/hooks.json` vào cấu hình Codex theo bản CLI đang dùng.
-- Các skill chính vẫn chạy bình thường dù hooks chưa bật.
+- Cài lại với `TAW_INSTALL_HOOKS=1 bash scripts/install.sh` hoặc `bash scripts/install.sh --hooks`.
+- Kiểm tra `~/.codex/config.toml` có `[features] codex_hooks = true`.
+- Kiểm tra `~/.codex/hooks.json` có command trỏ tới `~/.codex/plugins/taw/hooks/`.
+- Restart Codex session sau khi bật hook.
 
 ### Cần API key thay vì ChatGPT subscription
 Set env var:
